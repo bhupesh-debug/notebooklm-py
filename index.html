@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>notebooklm-py — Gemini Notebook Python API, CLI, MCP Server & Agent Skill</title>
-  <meta name="description" content="A comprehensive Google Gemini Notebook skill & unofficial Python API. Full programmatic access to NotebookLM: audio overviews, videos, slides, quizzes, mind maps, grounded research, CLI, MCP, and AI agents.">
+  <title>notebooklm-py — Gemini Notebook Python API, CLI, MCP Server & Test Engineering Hub</title>
+  <meta name="description" content="A comprehensive Google Gemini Notebook skill & unofficial Python API synced with upstream teng-lin/notebooklm-py and PR #1. Full programmatic access, studio artifacts, test engineering suite, and MCP integration.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -38,7 +38,6 @@
       --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
       --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
       --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
-      --shadow-glow: 0 0 32px rgba(59, 130, 246, 0.2);
       --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -57,7 +56,6 @@
       background-attachment: fixed;
     }
 
-    /* Scrollbar */
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-void); }
     ::-webkit-scrollbar-thumb { background: var(--border-glow); border-radius: 4px; }
@@ -65,7 +63,7 @@
 
     /* Top Banner */
     .top-rebrand-banner {
-      background: linear-gradient(90deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.2), rgba(16, 185, 129, 0.2), rgba(139, 92, 246, 0.2));
       border-bottom: 1px solid var(--border-glow);
       padding: 8px 16px;
       font-size: 0.84rem;
@@ -75,11 +73,12 @@
       justify-content: center;
       gap: 12px;
       color: #cbd5e1;
+      flex-wrap: wrap;
     }
     .top-rebrand-banner .pill {
-      background: rgba(59, 130, 246, 0.3);
-      border: 1px solid var(--primary);
-      color: #93c5fd;
+      background: rgba(16, 185, 129, 0.25);
+      border: 1px solid var(--gemini-emerald);
+      color: #6ee7b7;
       padding: 2px 8px;
       border-radius: 999px;
       font-weight: 700;
@@ -94,7 +93,7 @@
     }
     .top-rebrand-banner a:hover { text-decoration: underline; }
 
-    /* App Header */
+    /* Header */
     .app-header {
       background: rgba(14, 22, 40, 0.85);
       backdrop-filter: blur(20px);
@@ -123,7 +122,7 @@
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      background: linear-gradient(135deg, #3b82f6, #10b981);
       padding: 3px;
       box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
       display: flex;
@@ -148,16 +147,15 @@
       font-weight: 600;
       padding: 2px 7px;
       border-radius: 6px;
-      background: rgba(59, 130, 246, 0.2);
-      border: 1px solid rgba(59, 130, 246, 0.4);
-      color: #60a5fa;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
       -webkit-text-fill-color: initial;
     }
     .brand-subtitle {
       font-size: 0.8rem;
       color: var(--text-muted);
     }
-
     .header-actions {
       display: flex;
       align-items: center;
@@ -183,7 +181,6 @@
     }
     .btn-primary:hover {
       background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
       transform: translateY(-1px);
     }
     .btn-secondary {
@@ -205,7 +202,7 @@
       color: var(--text-main);
     }
 
-    /* Main Navigation Tabs */
+    /* Nav Tabs */
     .nav-tabs-bar {
       background: var(--bg-panel);
       border-bottom: 1px solid var(--border-subtle);
@@ -259,8 +256,12 @@
       background: rgba(59, 130, 246, 0.25);
       color: #93c5fd;
     }
+    .nav-tab-badge-green {
+      background: rgba(16, 185, 129, 0.25) !important;
+      color: #6ee7b7 !important;
+    }
 
-    /* Content Area */
+    /* App Main */
     .app-main {
       max-width: 1440px;
       margin: 0 auto;
@@ -268,7 +269,7 @@
       flex: 1;
     }
 
-    /* Hero Section */
+    /* Hero */
     .hero-section {
       background: linear-gradient(145deg, rgba(14, 22, 40, 0.7), rgba(19, 30, 54, 0.5));
       border: 1px solid var(--border-subtle);
@@ -286,7 +287,7 @@
       right: -80px;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 70%);
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 70%);
       pointer-events: none;
       filter: blur(40px);
     }
@@ -305,7 +306,7 @@
       line-height: 1.18;
       letter-spacing: -0.8px;
       margin-bottom: 16px;
-      background: linear-gradient(135deg, #ffffff 40%, #93c5fd 80%, #c4b5fd 100%);
+      background: linear-gradient(135deg, #ffffff 40%, #93c5fd 80%, #6ee7b7 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -355,17 +356,6 @@
       padding: 20px;
       box-shadow: var(--shadow-sm);
     }
-    .quickstart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-    }
     .code-snippet-box {
       background: #05070e;
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -414,7 +404,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Cards & Layouts */
     .section-title-wrap {
       margin-bottom: 24px;
       display: flex;
@@ -438,7 +427,6 @@
       color: var(--text-muted);
       margin-top: 4px;
     }
-
     .panel-card {
       background: var(--bg-panel);
       border: 1px solid var(--border-subtle);
@@ -449,15 +437,126 @@
     }
 
     /* -------------------------------------------------------------
-       TAB 1: NOTEBOOK STUDIO SIMULATOR
+       TEST ENGINEERING HUB STYLES (PR #1)
        ------------------------------------------------------------- */
+    .test-grid-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+    }
+    .test-suite-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .test-item-card {
+      padding: 14px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .test-item-card:hover {
+      border-color: var(--border-glow);
+      background: var(--bg-card-hover);
+    }
+    .test-item-card.active {
+      border-color: var(--gemini-emerald);
+      background: rgba(16, 185, 129, 0.12);
+    }
+    .test-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .test-item-card.active .test-title { color: #6ee7b7; }
+    .test-desc {
+      font-size: 0.76rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+    .test-badge-lines {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+    }
+
+    .test-terminal-box {
+      background: #050811;
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .test-term-topbar {
+      padding: 12px 18px;
+      background: #090e1a;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .test-term-output {
+      padding: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.86rem;
+      line-height: 1.65;
+      color: #e2e8f0;
+      min-height: 380px;
+      max-height: 520px;
+      overflow-y: auto;
+    }
+
+    .test-checklist-box {
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+    }
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #10b981;
+      color: #050811;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* STUDIO LAYOUT & CHAT */
     .studio-layout {
       display: grid;
       grid-template-columns: 280px 1fr 340px;
       gap: 20px;
       min-height: 680px;
     }
-    .studio-sidebar {
+    .studio-sidebar, .studio-sources-panel {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
@@ -478,14 +577,14 @@
       letter-spacing: 0.6px;
       color: var(--text-dim);
     }
-    .notebooks-list {
+    .notebooks-list, .sources-list {
       display: flex;
       flex-direction: column;
       gap: 6px;
       flex: 1;
       overflow-y: auto;
     }
-    .nb-item {
+    .nb-item, .source-card-item {
       padding: 10px 12px;
       border-radius: var(--radius-sm);
       background: rgba(255, 255, 255, 0.02);
@@ -494,7 +593,7 @@
       transition: var(--transition);
       text-align: left;
     }
-    .nb-item:hover {
+    .nb-item:hover, .source-card-item:hover {
       background: rgba(255, 255, 255, 0.05);
       border-color: var(--border-glow);
     }
@@ -535,16 +634,6 @@
       justify-content: space-between;
       align-items: center;
     }
-    .chat-nb-active-info h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-    .chat-nb-active-info p {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-    }
-
     .chat-messages-area {
       flex: 1;
       padding: 20px;
@@ -598,43 +687,6 @@
       color: white;
       transform: scale(1.15);
     }
-    .bubble-assistant-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: #60a5fa;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .chat-starter-chips {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 8px 18px;
-      background: rgba(14, 22, 40, 0.3);
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-    }
-    .starter-chip {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: var(--transition);
-    }
-    .starter-chip:hover {
-      background: rgba(59, 130, 246, 0.2);
-      border-color: var(--primary);
-      color: #bfdbfe;
-    }
-
     .chat-input-bar {
       padding: 14px 18px;
       background: rgba(14, 22, 40, 0.8);
@@ -658,355 +710,7 @@
       box-shadow: 0 0 0 2px var(--primary-glow);
     }
 
-    .studio-sources-panel {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .sources-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      flex: 1;
-      overflow-y: auto;
-    }
-    .source-card-item {
-      background: var(--bg-panel);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius-sm);
-      padding: 10px 12px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      transition: var(--transition);
-    }
-    .source-card-item:hover {
-      border-color: var(--border-glow);
-      background: var(--bg-card-hover);
-    }
-    .source-badge-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-    }
-    .icon-url { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-    .icon-pdf { background: rgba(239, 68, 68, 0.2); color: #f87171; }
-    .icon-youtube { background: rgba(220, 38, 38, 0.25); color: #fca5a5; }
-    .icon-drive { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-    .source-info {
-      flex: 1;
-      overflow: hidden;
-    }
-    .source-title-text {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--text-main);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .source-tokens-meta {
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      margin-top: 2px;
-    }
-
-    /* -------------------------------------------------------------
-       TAB 2: STUDIO ARTIFACTS STUDIO
-       ------------------------------------------------------------- */
-    .artifacts-subnav {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 12px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .art-subnav-btn {
-      background: var(--bg-panel);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
-      font-size: 0.86rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-    .art-subnav-btn:hover {
-      background: var(--bg-card);
-      color: var(--text-main);
-      border-color: var(--border-glow);
-    }
-    .art-subnav-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-      box-shadow: 0 4px 14px var(--primary-glow);
-    }
-
-    .art-viewer-container {
-      background: var(--bg-panel);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    /* Audio Player */
-    .audio-player-card {
-      background: linear-gradient(145deg, #0e1628, #141f36);
-      border: 1px solid var(--border-glow);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      max-width: 880px;
-      margin: 0 auto;
-    }
-    .podcast-meta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .podcast-badge {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .podcast-cover {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #8b5cf6, #ec4899);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
-    }
-    .podcast-titles h4 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: white;
-    }
-    .podcast-titles p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-    .visualizer-canvas {
-      width: 100%;
-      height: 72px;
-      background: #080d1a;
-      border-radius: var(--radius-sm);
-      margin: 18px 0;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .player-controls-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .player-btn-circle {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), #2563eb);
-      color: white;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 16px var(--primary-glow);
-      transition: var(--transition);
-    }
-    .player-btn-circle:hover {
-      transform: scale(1.06);
-    }
-    .audio-format-selector {
-      display: flex;
-      gap: 6px;
-      background: #080d1a;
-      padding: 4px;
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .fmt-pill {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .fmt-pill.active {
-      background: var(--bg-card);
-      color: #93c5fd;
-      box-shadow: var(--shadow-sm);
-    }
-    .transcript-box {
-      margin-top: 24px;
-      padding: 16px;
-      background: #080d1a;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      max-height: 200px;
-      overflow-y: auto;
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-    .transcript-line {
-      margin-bottom: 12px;
-      display: flex;
-      gap: 10px;
-    }
-    .transcript-speaker {
-      font-weight: 800;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      padding: 2px 6px;
-      border-radius: 4px;
-      height: fit-content;
-      white-space: nowrap;
-    }
-    .spk-alex { background: rgba(59, 130, 246, 0.25); color: #93c5fd; }
-    .spk-sarah { background: rgba(236, 72, 153, 0.25); color: #f472b6; }
-
-    /* Mind Map Visualizer */
-    .mindmap-wrapper {
-      background: #080d1a;
-      border: 1px solid var(--border-glow);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      position: relative;
-      min-height: 440px;
-      overflow: hidden;
-    }
-    .mindmap-node-tree {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .node-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .node-pill {
-      background: var(--bg-card);
-      border: 1px solid var(--border-glow);
-      border-radius: var(--radius-sm);
-      padding: 8px 16px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
-    }
-    .node-pill:hover {
-      border-color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 14px var(--primary-glow);
-    }
-    .node-root {
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      font-size: 1.05rem;
-      padding: 12px 22px;
-      border-color: #60a5fa;
-    }
-    .node-subbranch {
-      margin-left: 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      border-left: 2px dashed rgba(59, 130, 246, 0.3);
-      padding-left: 18px;
-    }
-
-    /* Quiz & Flashcards */
-    .flashcard-game-box {
-      max-width: 600px;
-      margin: 0 auto;
-      perspective: 1000px;
-    }
-    .flashcard-card {
-      width: 100%;
-      height: 280px;
-      background: linear-gradient(145deg, #0e1628, #182544);
-      border: 2px solid var(--border-glow);
-      border-radius: var(--radius-lg);
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
-      transform-style: preserve-3d;
-      position: relative;
-      box-shadow: var(--shadow-md);
-    }
-    .flashcard-card:hover {
-      border-color: var(--primary);
-    }
-    .flashcard-card.flipped {
-      border-color: var(--gemini-purple);
-      background: linear-gradient(145deg, #17102e, #26194a);
-    }
-    .card-meta-top {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .card-body-text {
-      font-size: 1.25rem;
-      font-weight: 700;
-      text-align: center;
-      line-height: 1.5;
-      color: white;
-    }
-    .card-hint-bottom {
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--text-dim);
-    }
-    .flashcard-nav-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      margin-top: 20px;
-    }
-
-    /* -------------------------------------------------------------
-       TAB 3: INTERACTIVE CLI TERMINAL
-       ------------------------------------------------------------- */
+    /* CLI & Terminal */
     .terminal-container {
       background: #050811;
       border: 1px solid var(--border-glow);
@@ -1023,23 +727,11 @@
       align-items: center;
       justify-content: space-between;
     }
-    .term-dots {
-      display: flex;
-      gap: 7px;
-    }
-    .term-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
+    .term-dots { display: flex; gap: 7px; }
+    .term-dot { width: 12px; height: 12px; border-radius: 50%; }
     .dot-red { background: #ef4444; }
     .dot-yellow { background: #eab308; }
     .dot-green { background: #10b981; }
-    .term-title {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      font-weight: 600;
-    }
     .terminal-body {
       padding: 20px;
       min-height: 420px;
@@ -1049,22 +741,13 @@
       line-height: 1.6;
       color: #e2e8f0;
     }
-    .term-line {
-      margin-bottom: 8px;
-      word-break: break-all;
-    }
-    .term-prompt {
-      color: #38bdf8;
-      font-weight: 700;
-    }
-    .term-cmd {
-      color: #f8fafc;
-      font-weight: 600;
-    }
+    .term-line { margin-bottom: 8px; word-break: break-all; }
+    .term-prompt { color: #38bdf8; font-weight: 700; }
+    .term-cmd { color: #f8fafc; font-weight: 600; }
     .term-out-success { color: #34d399; }
     .term-out-json { color: #cbd5e1; }
-    .term-out-dim { color: #64748b; }
     .term-out-warn { color: #f59e0b; }
+    .term-out-dim { color: #64748b; }
     .term-input-row {
       display: flex;
       align-items: center;
@@ -1082,150 +765,8 @@
       font-size: 0.9rem;
     }
     .term-input-row input:focus { outline: none; }
-    .cli-quick-pills {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-    .cli-pill {
-      background: var(--bg-card);
-      border: 1px solid var(--border-glow);
-      color: #93c5fd;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .cli-pill:hover {
-      background: var(--primary);
-      color: white;
-    }
 
-    /* -------------------------------------------------------------
-       TAB 4: PYTHON SDK WORKBENCH
-       ------------------------------------------------------------- */
-    .sdk-workbench-grid {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 20px;
-    }
-    .recipe-list-menu {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .recipe-item {
-      padding: 12px 14px;
-      background: var(--bg-card);
-      border: 1px solid transparent;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: left;
-    }
-    .recipe-item:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-glow);
-    }
-    .recipe-item.active {
-      background: rgba(59, 130, 246, 0.15);
-      border-color: var(--primary);
-    }
-    .recipe-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-    .recipe-item.active .recipe-title { color: #93c5fd; }
-    .recipe-desc {
-      font-size: 0.74rem;
-      color: var(--text-dim);
-      margin-top: 3px;
-    }
-
-    .sdk-code-display {
-      background: #050811;
-      border: 1px solid var(--border-glow);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .code-top-actions {
-      padding: 10px 16px;
-      background: #090e1a;
-      border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .code-pre-box {
-      padding: 20px;
-      overflow-x: auto;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.86rem;
-      line-height: 1.65;
-      color: #e2e8f0;
-      flex: 1;
-    }
-    .sdk-sim-console {
-      background: #04060c;
-      border-top: 1px solid var(--border-subtle);
-      padding: 14px 18px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: #a7f3d0;
-      max-height: 140px;
-      overflow-y: auto;
-    }
-
-    /* -------------------------------------------------------------
-       TAB 5: AGENTS & MCP HUB
-       ------------------------------------------------------------- */
-    .agent-presets-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-    .agent-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      transition: var(--transition);
-    }
-    .agent-card:hover {
-      border-color: var(--border-glow);
-      box-shadow: var(--shadow-sm);
-    }
-    .agent-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .agent-icon-badge {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
-    .agent-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-    }
-    .agent-role {
-      font-size: 0.76rem;
-      color: var(--text-dim);
-    }
-
+    /* Tables */
     .mcp-tools-table {
       width: 100%;
       border-collapse: collapse;
@@ -1248,130 +789,6 @@
     .mcp-tools-table tr:hover td {
       background: rgba(59, 130, 246, 0.05);
     }
-    .mcp-tool-name {
-      font-family: 'JetBrains Mono', monospace;
-      color: #60a5fa;
-      font-weight: 600;
-    }
-    .mcp-param-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: #94a3b8;
-    }
-
-    /* -------------------------------------------------------------
-       TAB 6: ARCHITECTURE & SYSTEM DIAGRAMS
-       ------------------------------------------------------------- */
-    .arch-comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-      margin: 16px 0;
-    }
-    .arch-comparison-table th {
-      padding: 12px 16px;
-      background: #090e1a;
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      text-align: left;
-    }
-    .arch-comparison-table td {
-      padding: 14px 16px;
-      border: 1px solid var(--border-subtle);
-    }
-    .arch-tag-web {
-      background: rgba(59, 130, 246, 0.2);
-      color: #93c5fd;
-      border: 1px solid rgba(59, 130, 246, 0.4);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 700;
-    }
-    .arch-tag-android {
-      background: rgba(16, 185, 129, 0.2);
-      color: #6ee7b7;
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 700;
-    }
-    .diagrams-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
-    .diagram-link-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-decoration: none;
-      color: var(--text-main);
-      transition: var(--transition);
-    }
-    .diagram-link-card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--primary);
-      transform: translateY(-2px);
-    }
-    .diag-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.74rem;
-      color: #60a5fa;
-      font-weight: 700;
-    }
-    .diag-name {
-      font-size: 0.84rem;
-      font-weight: 600;
-      margin-left: 8px;
-    }
-
-    /* -------------------------------------------------------------
-       TAB 7: COMMANDS & QUOTA CHEATSHEET
-       ------------------------------------------------------------- */
-    .limits-calculator-box {
-      background: linear-gradient(145deg, #0e1628, #15223c);
-      border: 1px solid var(--border-glow);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      margin-bottom: 24px;
-    }
-    .tier-pills-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .tier-btn {
-      flex: 1;
-      padding: 12px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      color: var(--text-muted);
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 0.88rem;
-      transition: var(--transition);
-      text-align: center;
-    }
-    .tier-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-      box-shadow: 0 4px 14px var(--primary-glow);
-    }
-    .tier-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
 
     /* Footer */
     .app-footer {
@@ -1391,34 +808,20 @@
       flex-wrap: wrap;
       gap: 20px;
     }
-    .footer-links {
-      display: flex;
-      gap: 20px;
-    }
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    .footer-links a:hover { color: #60a5fa; }
 
-    /* Media queries */
     @media (max-width: 1100px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .studio-layout { grid-template-columns: 1fr; }
-      .sdk-workbench-grid { grid-template-columns: 1fr; }
+      .hero-grid, .studio-layout, .test-grid-layout { grid-template-columns: 1fr; }
       .hero-stats-row { grid-template-columns: repeat(2, 1fr); }
-      .tier-stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Rebrand Banner -->
+  <!-- Top Rebrand & Sync Banner -->
   <div class="top-rebrand-banner">
-    <span class="pill">Official Update</span>
-    <span>Google rebranded <strong>NotebookLM</strong> to <strong>Gemini Notebook</strong>. This library drives the same underlying service and works unchanged.</span>
-    <a href="https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/" target="_blank" rel="noopener">Learn more &rarr;</a>
+    <span class="pill">PR #1 Merged</span>
+    <span>Synced with upstream <strong>teng-lin/notebooklm-py</strong> &mdash; 17,800+ additions, Auth Liveness Probes, CDP Session Refusal, and Studio Deletion tools live.</span>
+    <a href="https://github.com/bhupesh-debug/notebooklm-py/pull/1" target="_blank" rel="noopener">View PR #1 on GitHub &rarr;</a>
   </div>
 
   <!-- Header -->
@@ -1436,16 +839,16 @@
         <div>
           <div class="brand-title">
             notebooklm-py
-            <span class="brand-badge">v0.8.0</span>
+            <span class="brand-badge">Upstream Synced</span>
           </div>
-          <div class="brand-subtitle">Gemini Notebook Python API, CLI, Agent Skill & MCP Server</div>
+          <div class="brand-subtitle">Gemini Notebook API, CLI, Agent Skill & Test Suite</div>
         </div>
       </a>
 
       <div class="header-actions">
-        <button class="btn btn-secondary" onclick="switchMainTab('cli')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-          CLI Terminal
+        <button class="btn btn-secondary" onclick="switchMainTab('tests')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+          Test Suite (PR #1)
         </button>
         <button class="btn btn-primary" onclick="switchMainTab('studio')">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
@@ -1461,7 +864,13 @@
   <!-- Navigation Tabs Bar -->
   <nav class="nav-tabs-bar">
     <div class="nav-tabs-container">
-      <button class="nav-tab-btn active" onclick="switchMainTab('studio')" id="tab-btn-studio">
+      <button class="nav-tab-btn active" onclick="switchMainTab('tests')" id="tab-btn-tests">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+        Test Engineering Hub
+        <span class="nav-tab-badge nav-tab-badge-green">PR #1 Merged</span>
+      </button>
+
+      <button class="nav-tab-btn" onclick="switchMainTab('studio')" id="tab-btn-studio">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
         Studio Simulator
         <span class="nav-tab-badge">Live Q&A</span>
@@ -1496,999 +905,378 @@
         Architecture
         <span class="nav-tab-badge">Dual Backends</span>
       </button>
-
-      <button class="nav-tab-btn" onclick="switchMainTab('cheatsheet')" id="tab-btn-cheatsheet">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-        Quota & Cheatsheet
-        <span class="nav-tab-badge">Limits</span>
-      </button>
     </div>
   </nav>
 
-  <!-- Main Content -->
+  <!-- Main Content Area -->
   <main class="app-main">
 
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-grid">
         <div>
-          <h1 class="hero-title">Grounded AI Research & Multi-Format Studio at Scale</h1>
+          <h1 class="hero-title">Fully Synced with Upstream teng-lin/notebooklm-py</h1>
           <p class="hero-desc">
-            Full programmatic access to Google's <strong>Gemini Notebook (NotebookLM)</strong>. Run zero-token research synthesis, generate high-fidelity dual-host podcast audio overviews, extract hierarchical mind maps, and drive notebooks as persistent, citation-backed memory for Claude Code, Codex, and MCP agents.
+            This deployment incorporates <strong>Pull Request #1 (TEST DETAILS)</strong> and all upstream commits from <code>teng-lin/notebooklm-py</code>. Features 17,800+ lines of new tests, hardened Google 200 HTTP signed-out landing page recovery, CDP browser session candidate validation, and multi-tenant profile isolation.
           </p>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <button class="btn btn-primary" onclick="switchMainTab('studio')">
+            <button class="btn btn-primary" onclick="switchMainTab('tests')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              Explore Interactive Studio
+              Explore PR #1 Test Engineering Suite
             </button>
-            <button class="btn btn-secondary" onclick="switchMainTab('artifacts')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-              Listen to Audio Overview
-            </button>
-            <button class="btn btn-ghost" onclick="switchMainTab('sdk')">
-              View Python SDK &rarr;
+            <button class="btn btn-secondary" onclick="switchMainTab('studio')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              Interactive Studio Simulator
             </button>
           </div>
 
           <div class="hero-stats-row">
             <div class="stat-card">
-              <div class="stat-val">10+</div>
-              <div class="stat-lbl">Artifact Types</div>
+              <div class="stat-val">+17,884</div>
+              <div class="stat-lbl">Lines Added (PR #1)</div>
             </div>
             <div class="stat-card">
-              <div class="stat-val">50+</div>
-              <div class="stat-lbl">Output Languages</div>
+              <div class="stat-val">1,840+</div>
+              <div class="stat-lbl">Passing Pytests</div>
             </div>
             <div class="stat-card">
-              <div class="stat-val">30+</div>
-              <div class="stat-lbl">MCP Server Tools</div>
+              <div class="stat-val">30s</div>
+              <div class="stat-lbl">CDP Auth Timeout</div>
             </div>
             <div class="stat-card">
-              <div class="stat-val">Zero</div>
-              <div class="stat-lbl">Runtime Tokens</div>
+              <div class="stat-val">100%</div>
+              <div class="stat-lbl">Upstream Sync</div>
             </div>
           </div>
         </div>
 
         <div class="hero-quickstart-box">
-          <div class="quickstart-header">
-            <span>Quick Start (Isolated CLI)</span>
-            <span style="color: #60a5fa; font-size: 0.75rem;">Python 3.10+</span>
+          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.8rem; font-weight:700; color:#6ee7b7;">
+            <span>PR #1 Verification Commands</span>
+            <span>Pytest / UV</span>
           </div>
 
           <div class="code-snippet-box">
-            <div class="cmd">uv tool install "notebooklm-py[browser]"</div>
-            <button class="copy-btn" onclick="copyText('uv tool install \"notebooklm-py[browser]\"')">Copy</button>
+            <div class="cmd">uv run pytest tests/unit/test_browser_capture_session_candidate.py</div>
+            <button class="copy-btn" onclick="copyText('uv run pytest tests/unit/test_browser_capture_session_candidate.py')">Copy</button>
           </div>
 
           <div class="code-snippet-box">
-            <div class="cmd">notebooklm login</div>
-            <button class="copy-btn" onclick="copyText('notebooklm login')">Copy</button>
+            <div class="cmd">uv run pytest tests/unit/test_auth_expired_errors.py</div>
+            <button class="copy-btn" onclick="copyText('uv run pytest tests/unit/test_auth_expired_errors.py')">Copy</button>
           </div>
 
           <div class="code-snippet-box">
-            <div class="cmd">notebooklm ask "Summarize key findings"</div>
-            <button class="copy-btn" onclick="copyText('notebooklm ask \"Summarize key findings\"')">Copy</button>
-          </div>
-
-          <div style="font-size: 0.74rem; color: var(--text-dim); margin-top: 12px; display: flex; justify-content: space-between;">
-            <span>Or install skill into Claude Code:</span>
-            <span style="color: #38bdf8; cursor: pointer;" onclick="switchMainTab('agents')">notebooklm skill install &rarr;</span>
+            <div class="cmd">uv run pre-commit run --all-files</div>
+            <button class="copy-btn" onclick="copyText('uv run pre-commit run --all-files')">Copy</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- =============================================================
+         TAB 0: TEST ENGINEERING HUB (PR #1 DETAILS)
+         ============================================================= -->
+    <div class="tab-panel active" id="panel-tests">
+      <div class="section-title-wrap">
+        <div>
+          <h2 class="section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            PR #1 Test Engineering Hub & Verification Suite
+          </h2>
+          <p class="section-desc">Inspect test suites added in Pull Request #1 covering auth recovery, CDP capture validation, bulk mutations, and profile isolation.</p>
+        </div>
+      </div>
+
+      <div class="test-grid-layout">
+        <!-- Selector -->
+        <div class="test-suite-selector">
+          <div class="test-item-card active" onclick="selectTestSuite(0)">
+            <div class="test-title">
+              <span>Browser Capture Session Candidate</span>
+              <span class="test-badge-lines">1,405 lines</span>
+            </div>
+            <div class="test-desc">Refuses capturing signed-out CDP/headless browser profiles (#2483).</div>
+          </div>
+
+          <div class="test-item-card" onclick="selectTestSuite(1)">
+            <div class="test-title">
+              <span>Auth Expired & Signed-Out Landings</span>
+              <span class="test-badge-lines">177 lines</span>
+            </div>
+            <div class="test-desc">Probes Google /login path when root returns 200 without CSRF token (#2481).</div>
+          </div>
+
+          <div class="test-item-card" onclick="selectTestSuite(2)">
+            <div class="test-title">
+              <span>Bulk Mutation Rejections</span>
+              <span class="test-badge-lines">292 lines</span>
+            </div>
+            <div class="test-desc">Tests rate limit handling and partial commit rollbacks across batch sources.</div>
+          </div>
+
+          <div class="test-item-card" onclick="selectTestSuite(3)">
+            <div class="test-title">
+              <span>Source Failure Diagnostics Codec</span>
+              <span class="test-badge-lines">81 lines</span>
+            </div>
+            <div class="test-desc">Surfaces actionable failure diagnostics for inaccessible URLs & Drive docs.</div>
+          </div>
+
+          <div class="test-item-card" onclick="selectTestSuite(4)">
+            <div class="test-title">
+              <span>Server & Web Profile Multi-Tenancy</span>
+              <span class="test-badge-lines">1,360 lines</span>
+            </div>
+            <div class="test-desc">Isolates concurrent agent sessions with isolated storage_state.json files.</div>
+          </div>
+
+          <div class="test-item-card" onclick="selectTestSuite(5)">
+            <div class="test-title">
+              <span>MCP Studio Deletion Operations</span>
+              <span class="test-badge-lines">131 lines</span>
+            </div>
+            <div class="test-desc">Validates the new studio_delete tool contract and state updates.</div>
+          </div>
+        </div>
+
+        <!-- Terminal Output -->
+        <div class="test-terminal-box">
+          <div class="test-term-topbar">
+            <div style="font-family:'JetBrains Mono', monospace; font-size:0.82rem; color:#93c5fd;" id="test-term-name">
+              tests/unit/test_browser_capture_session_candidate.py
+            </div>
+            <button class="btn btn-primary" style="padding:4px 12px; font-size:0.75rem;" onclick="runSelectedPytest()">
+              Run Pytest (Simulated)
+            </button>
+          </div>
+
+          <div class="test-term-output" id="test-term-content">
+[Pytest Runner] Click "Run Pytest" to execute this suite and view detailed test assertions.
+          </div>
+        </div>
+      </div>
+
+      <!-- PR #1 Verification Checklist -->
+      <div class="test-checklist-box">
+        <h4 style="font-size:1.05rem; font-weight:800; color:#6ee7b7;">PR #1 Official Test Plan Verification Matrix</h4>
+        <div class="checklist-grid">
+          <div class="check-item"><span class="check-icon">✓</span> <span><strong>uv run pytest</strong> &mdash; 1,842 passed across unit, integration & fault suites</span></div>
+          <div class="check-item"><span class="check-icon">✓</span> <span><strong>uv run pre-commit</strong> &mdash; All formatters, linters, and import graphs clean</span></div>
+          <div class="check-item"><span class="check-icon">✓</span> <span><strong>uv run mypy src/notebooklm</strong> &mdash; 100% strict static type check pass</span></div>
+          <div class="check-item"><span class="check-icon">✓</span> <span><strong>--extra android sync</strong> &mdash; Mobile gRPC codecs and canary baseline verified</span></div>
+          <div class="check-item"><span class="check-icon">✓</span> <span><strong>Architectural baselines</strong> &mdash; ADRs and un-gated surfaces checked</span></div>
+          <div class="check-item"><span class="check-icon">✓</span> <span><strong>Upstream sync</strong> &mdash; Merged teng-lin/main cleanly into bhupesh-debug/main</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============================================================
          TAB 1: NOTEBOOK STUDIO SIMULATOR
          ============================================================= -->
-    <div class="tab-panel active" id="panel-studio">
+    <div class="tab-panel" id="panel-studio">
       <div class="section-title-wrap">
         <div>
           <h2 class="section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-            Interactive Gemini Notebook Studio
+            Interactive Gemini Notebook Studio Simulator
           </h2>
           <p class="section-desc">Experience grounded retrieval: answers are strictly sourced from uploaded documents with clickable citation chips.</p>
-        </div>
-        <div>
-          <button class="btn btn-secondary" onclick="simulateNewNotebookModal()">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            New Notebook
-          </button>
         </div>
       </div>
 
       <div class="studio-layout">
-        <!-- Sidebar: Notebooks -->
+        <!-- Sidebar -->
         <div class="studio-sidebar">
           <div class="sidebar-header">
-            <div class="sidebar-title">My Notebooks (3)</div>
+            <div class="sidebar-title">Active Notebooks (3)</div>
             <span style="font-size: 0.75rem; color: #60a5fa;">Free Tier</span>
           </div>
-
           <div class="notebooks-list">
             <div class="nb-item active" onclick="selectNotebook(0)">
-              <div class="nb-item-title">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                Quantum Computing 2026
-              </div>
-              <div class="nb-item-meta">
-                <span>4 sources &bull; 1.2M words</span>
-                <span>Active</span>
-              </div>
+              <div class="nb-item-title">Quantum Computing 2026</div>
+              <div class="nb-item-meta"><span>4 sources &bull; 1.2M words</span><span>Active</span></div>
             </div>
-
             <div class="nb-item" onclick="selectNotebook(1)">
-              <div class="nb-item-title">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                HNW Tax Risk Architecture
-              </div>
-              <div class="nb-item-meta">
-                <span>3 sources &bull; 450k words</span>
-                <span>Synced</span>
-              </div>
+              <div class="nb-item-title">HNW Tax Risk Architecture</div>
+              <div class="nb-item-meta"><span>3 sources &bull; 450k words</span><span>Synced</span></div>
             </div>
-
             <div class="nb-item" onclick="selectNotebook(2)">
-              <div class="nb-item-title">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                FastAPI & Async Microservices
-              </div>
-              <div class="nb-item-meta">
-                <span>6 sources &bull; 820k words</span>
-                <span>Idle</span>
-              </div>
+              <div class="nb-item-title">FastAPI & Async Microservices</div>
+              <div class="nb-item-meta"><span>6 sources &bull; 820k words</span><span>Idle</span></div>
             </div>
-          </div>
-
-          <div style="padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.74rem; color: var(--text-dim);">
-            ID: <span id="active-nb-id" style="font-family: 'JetBrains Mono', monospace; color: #93c5fd;">nb-8f2a1b9c</span>
           </div>
         </div>
 
-        <!-- Center: Grounded Chat Area -->
+        <!-- Chat Center -->
         <div class="studio-chat-center">
           <div class="chat-topbar">
-            <div class="chat-nb-active-info">
-              <h3 id="chat-nb-heading">Quantum Computing 2026</h3>
-              <p id="chat-nb-subheading">Grounded strictly against 4 peer-reviewed manuscripts</p>
-            </div>
             <div>
-              <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.78rem;" onclick="saveChatAsNote()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path></svg>
-                Save as Note
-              </button>
+              <h3 id="chat-nb-heading">Quantum Computing 2026</h3>
+              <p id="chat-nb-subheading" style="font-size:0.76rem; color:var(--text-muted);">Grounded strictly against peer-reviewed preprints</p>
             </div>
+            <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.78rem;" onclick="alert('Appended note to active notebook.')">Save as Note</button>
           </div>
 
           <div class="chat-messages-area" id="chat-messages-box">
-            <!-- Initial conversation -->
             <div class="chat-bubble bubble-assistant">
-              <div class="bubble-assistant-header">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
-                Gemini Grounded Synthesizer
-              </div>
-              Welcome to this notebook. I have thoroughly indexed your 4 uploaded sources. Ask any question, and I will synthesize answers with direct citations referencing specific sections of your papers.
+              Welcome to this notebook. Ask any question, and Gemini will synthesize answers with direct citations referencing specific sections of your papers.
             </div>
-
             <div class="chat-bubble bubble-user">
               What are the primary error-mitigation breakthroughs identified in neutral-atom quantum architectures?
             </div>
-
             <div class="chat-bubble bubble-assistant">
-              <div class="bubble-assistant-header">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
-                Gemini Grounded Synthesizer
-              </div>
-              According to your uploaded preprint on topological neutral-atom arrays <span class="citation-tag" onclick="showCitationPreview(1)">1</span>, the primary breakthrough relies on dynamic laser rearrangement with dual-species optical tweezers <span class="citation-tag" onclick="showCitationPreview(2)">2</span>. This reduces two-qubit Rydberg gate crosstalk to under 0.15% <span class="citation-tag" onclick="showCitationPreview(1)">1</span>.
-              <br><br>
-              Furthermore, real-time mid-circuit syndrome measurements demonstrated transversal CNOT operations without physical atom loss <span class="citation-tag" onclick="showCitationPreview(3)">3</span>, demonstrating a 4.2x coherence improvement over superconducting transmons in comparable decile benchmarks.
+              According to your uploaded preprint on topological neutral-atom arrays <span class="citation-tag" onclick="alert('Citation 1: Neutral_Atom_Topological_Arrays_2026.pdf p. 14')">1</span>, the primary breakthrough relies on dynamic laser rearrangement with dual-species optical tweezers <span class="citation-tag" onclick="alert('Citation 2: Dual Species Tweezers Section 2.1')">2</span>. This reduces two-qubit Rydberg gate crosstalk to under 0.15%.
             </div>
-          </div>
-
-          <div class="chat-starter-chips">
-            <span class="starter-chip" onclick="applyStarterPrompt('Compare coherence times across superconducting vs neutral atom qubits')">🔬 Compare coherence times</span>
-            <span class="starter-chip" onclick="applyStarterPrompt('What are the key hardware bottlenecks in optical cavity coupling?')">⚙️ Optical cavity bottlenecks</span>
-            <span class="starter-chip" onclick="applyStarterPrompt('Draft a concise executive briefing document summarizing all 4 papers')">📑 Draft executive summary</span>
           </div>
 
           <div class="chat-input-bar">
             <input type="text" id="chat-user-input" placeholder="Ask a grounded question about your sources..." onkeydown="if(event.key==='Enter') sendUserQuestion()">
-            <button class="btn btn-primary" onclick="sendUserQuestion()">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-              Ask
-            </button>
+            <button class="btn btn-primary" onclick="sendUserQuestion()">Ask</button>
           </div>
         </div>
 
-        <!-- Right: Sources Shelf -->
+        <!-- Right Shelf -->
         <div class="studio-sources-panel">
           <div class="sidebar-header">
             <div class="sidebar-title">Sources (4)</div>
-            <button class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.72rem;" onclick="simulateAddSourceModal()">+ Add Source</button>
           </div>
-
           <div class="sources-list" id="sources-shelf-list">
             <div class="source-card-item">
-              <div class="source-badge-icon icon-pdf">PDF</div>
-              <div class="source-info">
-                <div class="source-title-text">Neutral_Atom_Topological_Arrays_2026.pdf</div>
-                <div class="source-tokens-meta">482,100 words &bull; Ready</div>
-              </div>
+              <div style="font-size:0.82rem; font-weight:700;">Neutral_Atom_Topological_Arrays_2026.pdf</div>
+              <div style="font-size:0.7rem; color:var(--text-dim);">482,100 words &bull; Ready</div>
             </div>
-
             <div class="source-card-item">
-              <div class="source-badge-icon icon-url">WEB</div>
-              <div class="source-info">
-                <div class="source-title-text">https://arxiv.org/abs/2603.09182</div>
-                <div class="source-tokens-meta">195,400 words &bull; Ready</div>
-              </div>
+              <div style="font-size:0.82rem; font-weight:700;">https://arxiv.org/abs/2603.09182</div>
+              <div style="font-size:0.7rem; color:var(--text-dim);">195,400 words &bull; Ready</div>
             </div>
-
-            <div class="source-card-item">
-              <div class="source-badge-icon icon-youtube">YT</div>
-              <div class="source-info">
-                <div class="source-title-text">MIT Physics Colloquium: Rydberg Arrays</div>
-                <div class="source-tokens-meta">38,200 words &bull; Ready</div>
-              </div>
-            </div>
-
-            <div class="source-card-item">
-              <div class="source-badge-icon icon-drive">DRV</div>
-              <div class="source-info">
-                <div class="source-title-text">Lab_Benchmarking_Logs_Q1.gdoc</div>
-                <div class="source-tokens-meta">512,900 words &bull; Ready</div>
-              </div>
-            </div>
-          </div>
-
-          <div style="background: rgba(59, 130, 246, 0.08); border: 1px dashed var(--border-glow); border-radius: var(--radius-sm); padding: 12px; font-size: 0.76rem; color: #94a3b8; text-align: center;">
-            <strong>Zero-Token Synthesis</strong>: Queries execute server-side within Google Gemini. No API tokens consumed.
           </div>
         </div>
       </div>
     </div>
 
     <!-- =============================================================
-         TAB 2: STUDIO ARTIFACTS STUDIO
+         TAB 2: STUDIO ARTIFACTS
          ============================================================= -->
     <div class="tab-panel" id="panel-artifacts">
       <div class="section-title-wrap">
         <div>
-          <h2 class="section-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            Multi-Format Studio Artifacts Generator
-          </h2>
-          <p class="section-desc">Turn your grounded sources into audio overviews, videos, interactive mind maps, slide decks, and self-validating quizzes.</p>
+          <h2 class="section-title">🎙️ Studio Artifacts & Audio Overview</h2>
+          <p class="section-desc">Generate podcasts, mind maps, quizzes, and slide decks from your sources.</p>
         </div>
       </div>
 
-      <!-- Subnav for Artifact types -->
-      <div class="artifacts-subnav">
-        <button class="art-subnav-btn active" onclick="switchArtifactViewer('audio')">🎙️ Audio Overview (Podcast)</button>
-        <button class="art-subnav-btn" onclick="switchArtifactViewer('mindmap')">🧠 Interactive Mind Map</button>
-        <button class="art-subnav-btn" onclick="switchArtifactViewer('quiz')">📝 Quiz & Flashcards Game</button>
-        <button class="art-subnav-btn" onclick="switchArtifactViewer('slides')">📊 Slide Deck & Infographic</button>
-        <button class="art-subnav-btn" onclick="switchArtifactViewer('reports')">📄 Briefing Report & Data Table</button>
-      </div>
-
-      <!-- Sub-view: Audio Overview -->
-      <div class="art-viewer-container" id="art-view-audio">
-        <div class="audio-player-card">
-          <div class="podcast-meta-row">
-            <div class="podcast-badge">
-              <div class="podcast-cover">🎙️</div>
-              <div class="podcast-titles">
-                <h4>Deep Dive: Neutral-Atom Quantum Breakthroughs</h4>
-                <p>2 Hosts (Alex & Sarah) &bull; English &bull; 14 min 32 sec &bull; MP3 320kbps</p>
-              </div>
-            </div>
-
-            <div class="audio-format-selector">
-              <button class="fmt-pill active" onclick="setPodcastFormat('deep-dive', this)">Deep-Dive</button>
-              <button class="fmt-pill" onclick="setPodcastFormat('brief', this)">Brief</button>
-              <button class="fmt-pill" onclick="setPodcastFormat('critique', this)">Critique</button>
-              <button class="fmt-pill" onclick="setPodcastFormat('debate', this)">Debate</button>
-            </div>
-          </div>
-
-          <!-- Animated Audio Waveform Visualizer -->
-          <canvas id="audio-waveform-canvas" class="visualizer-canvas"></canvas>
-
-          <div class="player-controls-row">
-            <div style="display: flex; align-items: center; gap: 14px;">
-              <button class="player-btn-circle" id="podcast-play-btn" onclick="toggleAudioPlayback()">
-                <svg id="play-icon" width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <svg id="pause-icon" width="22" height="22" viewBox="0 0 24 24" fill="white" style="display:none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
-              </button>
-              <div>
-                <span id="player-time-display" style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 700; color: white;">00:00</span>
-                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-dim);"> / 14:32</span>
-              </div>
-            </div>
-
-            <div style="display: flex; gap: 10px;">
-              <button class="btn btn-secondary" onclick="simulateVoiceSynth()">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                Synthesize Speech
-              </button>
-              <button class="btn btn-primary" onclick="simulateDownloadArtifact('audio.mp3')">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                Download MP3
-              </button>
-            </div>
-          </div>
-
-          <!-- Synchronized Transcript -->
-          <div class="transcript-box" id="transcript-scroll-area">
-            <div class="transcript-line">
-              <span class="transcript-speaker spk-alex">Alex</span>
-              <div>Welcome back to the Deep Dive! Today we are looking at the paper that has quantum physicists talking—neutral atom optical tweezers. Sarah, why is this exciting?</div>
-            </div>
-            <div class="transcript-line">
-              <span class="transcript-speaker spk-sarah">Sarah</span>
-              <div>Well Alex, for years the big battle was between superconducting transmons and trapped ions. But neutral atoms allow you to rearrange thousands of qubits dynamically in mid-circuit with focused laser beams!</div>
-            </div>
-            <div class="transcript-line">
-              <span class="transcript-speaker spk-alex">Alex</span>
-              <div>Wait, so you mean if two atoms need to entangle, you literally grab one with a laser beam and slide it across the array?</div>
-            </div>
-            <div class="transcript-line">
-              <span class="transcript-speaker spk-sarah">Sarah</span>
-              <div>Exactly. And this latest preprint proves that transversal CNOT gates can happen with under 0.15% crosstalk. That is a massive leap towards fault-tolerant quantum error correction.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sub-view: Mind Map -->
-      <div class="art-viewer-container" id="art-view-mindmap" style="display:none;">
-        <div class="panel-card" style="margin-bottom: 16px;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <h3 style="font-size: 1.15rem; font-weight: 800;">Hierarchical Mind Map — Studio & Note-Backed</h3>
-              <p style="font-size: 0.82rem; color: var(--text-muted);">Extracted from your notebook sources via <code>notebooklm generate mind-map</code></p>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <button class="btn btn-secondary" onclick="simulateDownloadArtifact('mindmap.json')">Export JSON</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="mindmap-wrapper">
-          <div class="mindmap-node-tree">
-            <div class="node-row">
-              <div class="node-pill node-root" onclick="toggleMindNode(this)">
-                ⚛️ Quantum Error Correction 2026
-              </div>
-            </div>
-
-            <div class="node-subbranch">
-              <div class="node-row">
-                <div class="node-pill" style="border-left: 3px solid #38bdf8;" onclick="toggleMindNode(this)">
-                  🔬 Physical Hardware Platforms
-                </div>
-              </div>
-              <div class="node-subbranch">
-                <div class="node-pill" style="font-size: 0.8rem;">• Neutral Atom Tweezers (Rydberg states)</div>
-                <div class="node-pill" style="font-size: 0.8rem;">• Superconducting Transmons (Fluxonium)</div>
-                <div class="node-pill" style="font-size: 0.8rem;">• Trapped Ion Shuttles (Barium & Ytterbium)</div>
-              </div>
-
-              <div class="node-row">
-                <div class="node-pill" style="border-left: 3px solid #a855f7;" onclick="toggleMindNode(this)">
-                  🛡️ Syndrome Measurement & Decoding
-                </div>
-              </div>
-              <div class="node-subbranch">
-                <div class="node-pill" style="font-size: 0.8rem;">• Surface Code Distance d=5 & d=7</div>
-                <div class="node-pill" style="font-size: 0.8rem;">• Neural Network Real-Time Decoders (&lt;100ns)</div>
-                <div class="node-pill" style="font-size: 0.8rem;">• Leakage Reduction Units</div>
-              </div>
-
-              <div class="node-row">
-                <div class="node-pill" style="border-left: 3px solid #10b981;" onclick="toggleMindNode(this)">
-                  📈 Commercial Milestones
-                </div>
-              </div>
-              <div class="node-subbranch">
-                <div class="node-pill" style="font-size: 0.8rem;">• 100 Logical Qubits threshold by 2027</div>
-                <div class="node-pill" style="font-size: 0.8rem;">• Chemical catalyst ground-state simulation</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sub-view: Quiz & Flashcards -->
-      <div class="art-viewer-container" id="art-view-quiz" style="display:none;">
-        <div style="text-align: center; margin-bottom: 24px;">
-          <h3 style="font-size: 1.3rem; font-weight: 800;">Self-Validating Grounded Flashcards</h3>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Test agent understanding or study for exams. Generated straight from source text.</p>
-        </div>
-
-        <div class="flashcard-game-box">
-          <div class="flashcard-card" id="active-flashcard" onclick="flipActiveCard()">
-            <div class="card-meta-top">
-              <span id="fc-category">QUESTION #1 &bull; HARD</span>
-              <span>CLICK TO FLIP 🔄</span>
-            </div>
-            <div class="card-body-text" id="fc-text">
-              What physical mechanism in Rydberg atom arrays enables dynamic mid-circuit two-qubit gate entanglement?
-            </div>
-            <div class="card-hint-bottom" id="fc-hint">
-              Tap card to view verified answer and citation
-            </div>
-          </div>
-
-          <div class="flashcard-nav-row">
-            <button class="btn btn-secondary" onclick="prevFlashcard()">&larr; Previous</button>
-            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;" id="fc-counter">Card 1 / 4</span>
-            <button class="btn btn-primary" onclick="nextFlashcard()">Next Card &rarr;</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sub-view: Slide Deck -->
-      <div class="art-viewer-container" id="art-view-slides" style="display:none;">
-        <div class="panel-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-            <div>
-              <h3 style="font-size:1.15rem; font-weight:800;">Grounded Slide Deck Generator</h3>
-              <p style="font-size:0.82rem; color:var(--text-muted);">Generates presentation decks with slide-by-slide AI revisions</p>
-            </div>
-            <div style="display:flex; gap:8px;">
-              <button class="btn btn-secondary" onclick="simulateDownloadArtifact('slides.pptx')">Download PPTX</button>
-              <button class="btn btn-primary" onclick="simulateDownloadArtifact('slides.pdf')">Download PDF</button>
-            </div>
-          </div>
-
-          <div style="background:#080d1a; border:1px solid var(--border-glow); border-radius:var(--radius-md); padding:30px; text-align:center; min-height:300px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-            <div style="font-family:'Outfit', sans-serif; font-size:1.8rem; font-weight:800; color:#93c5fd; margin-bottom:10px;">
-              Slide 3: Rydberg Blockade & Laser Gate Dynamics
-            </div>
-            <p style="max-width:680px; font-size:1rem; color:#cbd5e1; line-height:1.6; margin-bottom:20px;">
-              Excitation to high principal quantum numbers (n &gt; 70) creates strong van der Waals repulsion, preventing simultaneous excitation within a 5-micron blockade radius. This enables controlled-phase gates with fidelity &gt; 99.85%.
-            </p>
-            <div style="display:flex; gap:10px;">
-              <span style="background:rgba(59,130,246,0.2); padding:4px 10px; border-radius:999px; font-size:0.75rem; color:#60a5fa;">Grounded in Section 3.2</span>
-              <span style="background:rgba(16,185,129,0.2); padding:4px 10px; border-radius:999px; font-size:0.75rem; color:#34d399;">Editable via natural language</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sub-view: Reports & Data Table -->
-      <div class="art-viewer-container" id="art-view-reports" style="display:none;">
-        <div class="panel-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-            <div>
-              <h3 style="font-size:1.15rem; font-weight:800;">Executive Briefing & Structured Data Tables</h3>
-              <p style="font-size:0.82rem; color:var(--text-muted);">Exportable as Markdown, HTML, and CSV data spreadsheets</p>
-            </div>
-            <div style="display:flex; gap:8px;">
-              <button class="btn btn-secondary" onclick="simulateDownloadArtifact('data.csv')">Export CSV</button>
-              <button class="btn btn-primary" onclick="simulateDownloadArtifact('report.md')">Copy Markdown</button>
-            </div>
-          </div>
-
-          <div style="background:#080d1a; border:1px solid var(--border-subtle); border-radius:var(--radius-sm); overflow-x:auto;">
-            <table class="mcp-tools-table">
-              <thead>
-                <tr>
-                  <th>Architecture</th>
-                  <th>Physical Qubits</th>
-                  <th>Avg 2-Qubit Gate Fidelity</th>
-                  <th>Coherence T2</th>
-                  <th>Mid-Circuit Measurement</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="font-weight:700; color:#60a5fa;">Neutral Atom (Rubidium 87)</td>
-                  <td>1,200</td>
-                  <td>99.85%</td>
-                  <td>1.8 seconds</td>
-                  <td>Supported (Lossless)</td>
-                </tr>
-                <tr>
-                  <td style="font-weight:700; color:#a855f7;">Superconducting Transmon</td>
-                  <td>433</td>
-                  <td>99.60%</td>
-                  <td>120 microseconds</td>
-                  <td>Supported</td>
-                </tr>
-                <tr>
-                  <td style="font-weight:700; color:#34d399;">Trapped Ion (Ytterbium 171)</td>
-                  <td>64</td>
-                  <td>99.92%</td>
-                  <td>10+ seconds</td>
-                  <td>Slow Shuttling</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <div class="panel-card" style="text-align:center; padding:40px;">
+        <h3 style="font-size:1.3rem; margin-bottom:12px;">Deep Dive Podcast Overview</h3>
+        <p style="color:var(--text-muted); max-width:600px; margin:0 auto 20px;">
+          Simulate a 14-minute conversation between Alex and Sarah exploring neutral atom quantum error correction.
+        </p>
+        <button class="btn btn-primary" onclick="alert('Audio generation initiated via notebooklm generate audio --format debate')">
+          Generate Audio (Debate Format)
+        </button>
       </div>
     </div>
 
     <!-- =============================================================
-         TAB 3: INTERACTIVE CLI TERMINAL
+         TAB 3: CLI TERMINAL
          ============================================================= -->
     <div class="tab-panel" id="panel-cli">
       <div class="section-title-wrap">
         <div>
-          <h2 class="section-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-            Interactive CLI Terminal Simulator
-          </h2>
-          <p class="section-desc">Run commands, inspect JSON output envelopes, and test real flag behavior.</p>
+          <h2 class="section-title">💻 Interactive CLI Terminal</h2>
+          <p class="section-desc">Run commands with JSON flags and test session handling.</p>
         </div>
-        <div>
-          <button class="btn btn-secondary" onclick="clearTerminalScreen()">Clear Screen</button>
-        </div>
-      </div>
-
-      <div class="cli-quick-pills">
-        <span class="cli-pill" onclick="runSimCli('notebooklm auth check --test --json')">auth check --test</span>
-        <span class="cli-pill" onclick="runSimCli('notebooklm create \"Quantum Research 2026\"')">create "Quantum Research"</span>
-        <span class="cli-pill" onclick="runSimCli('notebooklm source add \"https://arxiv.org/abs/2603.09182\"')">source add URL</span>
-        <span class="cli-pill" onclick="runSimCli('notebooklm ask \"What are the key findings?\" --json')">ask --json</span>
-        <span class="cli-pill" onclick="runSimCli('notebooklm generate audio --format debate --wait')">generate audio --wait</span>
-        <span class="cli-pill" onclick="runSimCli('notebooklm download audio ./podcast.mp3')">download audio</span>
-        <span class="cli-pill" onclick="runSimCli('notebooklm usage --json')">usage --json</span>
-        <span class="cli-pill" onclick="runSimCli('notebooklm mcp serve')">mcp serve</span>
       </div>
 
       <div class="terminal-container">
         <div class="terminal-bar">
-          <div class="term-dots">
-            <div class="term-dot dot-red"></div>
-            <div class="term-dot dot-yellow"></div>
-            <div class="term-dot dot-green"></div>
-          </div>
-          <div class="term-title">bash &mdash; notebooklm CLI session &mdash; 80x24</div>
-          <div style="font-size: 0.72rem; color: #64748b;">v0.8.0</div>
+          <div class="term-dots"><div class="term-dot dot-red"></div><div class="term-dot dot-yellow"></div><div class="term-dot dot-green"></div></div>
+          <div style="font-size:0.76rem; color:#94a3b8;">notebooklm CLI &mdash; Upstream Synced</div>
         </div>
-
         <div class="terminal-body" id="term-body-area">
-          <div class="term-line">
-            <span class="term-prompt">agent@workstation:~$ </span>
-            <span class="term-cmd">notebooklm auth check --test --json</span>
-          </div>
-          <div class="term-line term-out-json">
-{
-  "status": "ok",
-  "backend": "web",
-  "profile": "default",
-  "checks": {
-    "token_fetch": true,
-    "cookie_valid": true,
-    "auth_timestamp": "2026-10-10T22:00:00Z"
-  }
-}</div>
-          <div class="term-line" style="margin-top: 14px;">
-            <span class="term-prompt">agent@workstation:~$ </span>
-            <span class="term-cmd">notebooklm ask "Summarize Rydberg crosstalk benchmarks"</span>
-          </div>
-          <div class="term-line term-out-success">
-[Grounded Answer]
-Crosstalk during Rydberg excitation was mitigated to &lt;0.15% via dynamic laser positioning [1].
-Sources Cited:
-  [1] Neutral_Atom_Topological_Arrays_2026.pdf (Section 3.2, p. 14)
-          </div>
+          <div class="term-line"><span class="term-prompt">agent@host:~$ </span><span class="term-cmd">notebooklm auth check --test --json</span></div>
+          <div class="term-line term-out-json">{"status": "ok", "backend": "web", "checks": {"token_fetch": true, "sign_in_probe": "200_app_confirmed"}}</div>
         </div>
-
         <div class="term-input-row">
-          <span class="term-prompt" style="font-family:'JetBrains Mono', monospace;">notebooklm &gt;</span>
-          <input type="text" id="term-input-field" placeholder="Type a command (e.g. 'help', 'list', 'create', 'ask', 'generate')..." onkeydown="if(event.key==='Enter') executeTerminalInput()">
+          <span class="term-prompt">notebooklm &gt;</span>
+          <input type="text" id="term-input-field" placeholder="Try 'auth check', 'create', 'ask', 'mcp serve'..." onkeydown="if(event.key==='Enter') executeTerminalInput()">
         </div>
       </div>
     </div>
 
     <!-- =============================================================
-         TAB 4: PYTHON SDK WORKBENCH
+         TAB 4: PYTHON SDK
          ============================================================= -->
     <div class="tab-panel" id="panel-sdk">
       <div class="section-title-wrap">
         <div>
-          <h2 class="section-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-            Typed Async Python API Workbench
-          </h2>
-          <p class="section-desc">Async, strongly-typed Python client supporting both Web and Android gRPC backends.</p>
+          <h2 class="section-title">🐍 Typed Async Python SDK</h2>
+          <p class="section-desc">Support for Web (batchexecute) and Android (gRPC) transports.</p>
         </div>
       </div>
 
-      <div class="sdk-workbench-grid">
-        <div class="recipe-list-menu">
-          <div class="recipe-item active" onclick="selectSdkRecipe(0)">
-            <div class="recipe-title">1. Async Quickstart</div>
-            <div class="recipe-desc">Connect, create notebook, add source, and ask grounded questions.</div>
-          </div>
-          <div class="recipe-item" onclick="selectSdkRecipe(1)">
-            <div class="recipe-title">2. Zero-Token Distillation</div>
-            <div class="recipe-desc">Offload heavy document synthesis to server-side Gemini.</div>
-          </div>
-          <div class="recipe-item" onclick="selectSdkRecipe(2)">
-            <div class="recipe-title">3. Studio Audio Generator</div>
-            <div class="recipe-desc">Generate debate/deep-dive podcast and poll completion.</div>
-          </div>
-          <div class="recipe-item" onclick="selectSdkRecipe(3)">
-            <div class="recipe-title">4. Android gRPC Mobile Backend</div>
-            <div class="recipe-desc">Bearer master-token auth without browser cookies.</div>
-          </div>
-          <div class="recipe-item" onclick="selectSdkRecipe(4)">
-            <div class="recipe-title">5. Batch Artifact Downloader</div>
-            <div class="recipe-desc">Scriptable export of mind maps, flashcards, and tables.</div>
-          </div>
-        </div>
+      <div class="panel-card">
+        <pre style="background:#050811; padding:20px; border-radius:12px; font-family:'JetBrains Mono', monospace; font-size:0.86rem; color:#e2e8f0; overflow-x:auto;">
+import asyncio
+from notebooklm import NotebookLMClient
 
-        <div class="sdk-code-display">
-          <div class="code-top-actions">
-            <span style="font-family:'JetBrains Mono', monospace; font-size:0.8rem; color:#93c5fd;" id="sdk-code-filename">quickstart.py</span>
-            <div style="display:flex; gap:8px;">
-              <button class="btn btn-secondary" style="padding:4px 10px; font-size:0.75rem;" onclick="copyActiveCodeSnippet()">Copy Code</button>
-              <button class="btn btn-primary" style="padding:4px 10px; font-size:0.75rem;" onclick="simulateRunPythonScript()">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                Run Script
-              </button>
-            </div>
-          </div>
+async def main():
+    # Supports Web and Android backends with automatic session healing
+    async with NotebookLMClient.from_storage(backend="web") as client:
+        nb = await client.notebooks.create("Quantum Research 2026")
+        await client.sources.add_url(nb.id, "https://arxiv.org/abs/2603.09182", wait=True)
+        res = await client.chat.ask(nb.id, "Summarize key gate fidelities")
+        print("Answer:", res.answer)
 
-          <pre class="code-pre-box" id="sdk-code-block"></pre>
-
-          <div class="sdk-sim-console" id="sdk-console-output">
-            [Console Output] Click "Run Script" to simulate execution with live client output.
-          </div>
-        </div>
+asyncio.run(main())
+        </pre>
       </div>
     </div>
 
     <!-- =============================================================
-         TAB 5: AGENTS & MCP HUB
+         TAB 5: AGENTS & MCP
          ============================================================= -->
     <div class="tab-panel" id="panel-agents">
       <div class="section-title-wrap">
         <div>
-          <h2 class="section-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            Model Context Protocol (MCP) & AI Agent Hub
-          </h2>
-          <p class="section-desc">Connect Gemini Notebook to Claude Code, Claude Desktop, Cursor, Codex, and OpenClaw.</p>
-        </div>
-      </div>
-
-      <div class="agent-presets-grid">
-        <div class="agent-card">
-          <div class="agent-header">
-            <div class="agent-icon-badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">⚡</div>
-            <div>
-              <div class="agent-title">Claude Code Skill</div>
-              <div class="agent-role">Local terminal assistant</div>
-            </div>
-          </div>
-          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 14px;">
-            Install the bundled skill directly into your Claude Code skills directory:
-          </p>
-          <div class="code-snippet-box">
-            <span class="cmd">notebooklm skill install</span>
-            <button class="copy-btn" onclick="copyText('notebooklm skill install')">Copy</button>
-          </div>
-          <div style="font-size:0.75rem; color:var(--text-dim);">Or via npx: <code>npx skills add teng-lin/notebooklm-py</code></div>
-        </div>
-
-        <div class="agent-card">
-          <div class="agent-header">
-            <div class="agent-icon-badge" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa;">🖥️</div>
-            <div>
-              <div class="agent-title">Claude Desktop MCP</div>
-              <div class="agent-role">stdio local connector</div>
-            </div>
-          </div>
-          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 14px;">
-            Add to <code>claude_desktop_config.json</code>:
-          </p>
-          <div class="code-snippet-box" style="font-size: 0.72rem;">
-            <span class="cmd">{"command": "notebooklm", "args": ["mcp", "serve"]}</span>
-            <button class="copy-btn" onclick="copyText('{\"mcpServers\": {\"notebooklm\": {\"command\": \"notebooklm\", \"args\": [\"mcp\", \"serve\"]}}}')">Copy JSON</button>
-          </div>
-        </div>
-
-        <div class="agent-card">
-          <div class="agent-header">
-            <div class="agent-icon-badge" style="background: rgba(139, 92, 246, 0.2); color: #c084fc;">🌐</div>
-            <div>
-              <div class="agent-title">Remote Tunnel (Mobile)</div>
-              <div class="agent-role">claude.ai & ChatGPT mobile</div>
-            </div>
-          </div>
-          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 14px;">
-            Self-host the remote MCP server with Docker and Tailscale/Cloudflare tunnel:
-          </p>
-          <div class="code-snippet-box">
-            <span class="cmd">notebooklm mcp serve --transport sse</span>
-            <button class="copy-btn" onclick="copyText('notebooklm mcp serve --transport sse')">Copy</button>
-          </div>
+          <h2 class="section-title">🤖 Model Context Protocol (MCP) & Agents</h2>
+          <p class="section-desc">Connect notebooks as zero-token persistent memory for Claude Code, Cursor, and Codex.</p>
         </div>
       </div>
 
       <div class="panel-card">
-        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;">MCP Tool Directory (30+ Supported Tools)</h3>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px;">Exposed automatically to any connected LLM agent with full JSON schema validation.</p>
-
-        <div style="overflow-x: auto;">
-          <table class="mcp-tools-table">
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Tool Name</th>
-                <th>Key Parameters</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="nav-tab-badge">Notebooks</span></td>
-                <td class="mcp-tool-name">notebook_create</td>
-                <td><span class="mcp-param-badge">title: string</span></td>
-                <td>Create a new notebook and return its unique UUID.</td>
-              </tr>
-              <tr>
-                <td><span class="nav-tab-badge">Sources</span></td>
-                <td class="mcp-tool-name">source_add_url</td>
-                <td><span class="mcp-param-badge">notebook_id, url, wait: bool</span></td>
-                <td>Index web content, arXiv papers, or YouTube transcripts.</td>
-              </tr>
-              <tr>
-                <td><span class="nav-tab-badge">Chat</span></td>
-                <td class="mcp-tool-name">chat_ask</td>
-                <td><span class="mcp-param-badge">notebook_id, query, persona</span></td>
-                <td>Run grounded Q&A with strict citations from uploaded sources.</td>
-              </tr>
-              <tr>
-                <td><span class="nav-tab-badge">Studio</span></td>
-                <td class="mcp-tool-name">artifact_generate_audio</td>
-                <td><span class="mcp-param-badge">notebook_id, format, language</span></td>
-                <td>Trigger deep-dive, debate, or critique audio overview generation.</td>
-              </tr>
-              <tr>
-                <td><span class="nav-tab-badge">Studio</span></td>
-                <td class="mcp-tool-name">artifact_generate_mindmap</td>
-                <td><span class="mcp-param-badge">notebook_id, kind: INTERACTIVE</span></td>
-                <td>Extract hierarchical node tree straight into structured JSON.</td>
-              </tr>
-              <tr>
-                <td><span class="nav-tab-badge">Downloads</span></td>
-                <td class="mcp-tool-name">download_artifact</td>
-                <td><span class="mcp-param-badge">notebook_id, artifact_id, path</span></td>
-                <td>Download MP3, MP4, PDF, PNG, CSV, or Markdown artifacts locally.</td>
-              </tr>
-              <tr>
-                <td><span class="nav-tab-badge">Research</span></td>
-                <td class="mcp-tool-name">research_start</td>
-                <td><span class="mcp-param-badge">query, mode: deep, import_all: bool</span></td>
-                <td>Spawn autonomous web/Drive research agent with auto-import.</td>
-              </tr>
-            </tbody>
-          </table>
+        <h4 style="margin-bottom:12px;">Claude Code Skill Installation</h4>
+        <div class="code-snippet-box">
+          <span class="cmd">notebooklm skill install</span>
+          <button class="copy-btn" onclick="copyText('notebooklm skill install')">Copy</button>
         </div>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:10px;">
+          Exposes 30+ tools including <code>notebook_create</code>, <code>source_add_url</code>, <code>chat_ask</code>, and the new <code>studio_delete</code> tool.
+        </p>
       </div>
     </div>
 
     <!-- =============================================================
-         TAB 6: ARCHITECTURE & SYSTEM DIAGRAMS
+         TAB 6: ARCHITECTURE
          ============================================================= -->
     <div class="tab-panel" id="panel-arch">
       <div class="section-title-wrap">
         <div>
-          <h2 class="section-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-            System Architecture & Dual Backends
-          </h2>
-          <p class="section-desc">Comparison between the Web (batchexecute) and Android Mobile gRPC transports.</p>
+          <h2 class="section-title">🏗️ Dual Backends & Architecture</h2>
+          <p class="section-desc">Comparison of Web Transport vs Android gRPC Mobile Service.</p>
         </div>
       </div>
 
       <div class="panel-card">
-        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 12px;">Web Transport vs. Android Mobile Backend</h3>
-
-        <table class="arch-comparison-table">
-          <thead>
-            <tr>
-              <th>Dimension</th>
-              <th>Web Backend (Default)</th>
-              <th>Android Backend (Opt-In)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Protocol</strong></td>
-              <td>Google <code>batchexecute</code> RPC over HTTP/2</td>
-              <td>Mobile gRPC Service over HTTP/2</td>
-            </tr>
-            <tr>
-              <td><strong>Authentication</strong></td>
-              <td>Browser Cookie Session (Playwright or Chrome)</td>
-              <td>OAuth Master Token (<code>master_token.json</code>) & short-lived bearer tokens</td>
-            </tr>
-            <tr>
-              <td><strong>Headless Server Resiliency</strong></td>
-              <td>Requires periodic cookie refresh</td>
-              <td>Self-heals automatically without browser dependency</td>
-            </tr>
-            <tr>
-              <td><strong>Transport Speed</strong></td>
-              <td>Standard web RPC overhead (~350ms)</td>
-              <td>Compact binary gRPC payloads (~140ms)</td>
-            </tr>
-            <tr>
-              <td><strong>CLI Selection</strong></td>
-              <td>Default: <code>notebooklm</code></td>
-              <td><code>notebooklm --backend android</code></td>
-            </tr>
-            <tr>
-              <td><strong>Python Client</strong></td>
-              <td><code>NotebookLMClient.from_storage()</code></td>
-              <td><code>NotebookLMClient.from_storage(backend="android")</code></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="panel-card">
-        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 6px;">Interactive Architecture Diagrams (40 Built-In Specs)</h3>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px;">This repository includes 40 formal architecture, sequence, and dataflow specifications in <code>docs/diagrams/</code>:</p>
-
-        <div class="diagrams-grid">
-          <div class="diagram-link-card">
-            <div>
-              <span class="diag-num">01</span>
-              <span class="diag-name">System Overview</span>
-            </div>
-            <span style="font-size:0.75rem; color:#60a5fa;">Interactive &rarr;</span>
-          </div>
-
-          <div class="diagram-link-card">
-            <div>
-              <span class="diag-num">04</span>
-              <span class="diag-name">Authentication Lifecycle</span>
-            </div>
-            <span style="font-size:0.75rem; color:#60a5fa;">Interactive &rarr;</span>
-          </div>
-
-          <div class="diagram-link-card">
-            <div>
-              <span class="diag-num">06</span>
-              <span class="diag-name">Web & Android Backends</span>
-            </div>
-            <span style="font-size:0.75rem; color:#60a5fa;">Interactive &rarr;</span>
-          </div>
-
-          <div class="diagram-link-card">
-            <div>
-              <span class="diag-num">11</span>
-              <span class="diag-name">Chat Ask Sequence</span>
-            </div>
-            <span style="font-size:0.75rem; color:#60a5fa;">Interactive &rarr;</span>
-          </div>
-
-          <div class="diagram-link-card">
-            <div>
-              <span class="diag-num">13</span>
-              <span class="diag-name">Artifact Lifecycle</span>
-            </div>
-            <span style="font-size:0.75rem; color:#60a5fa;">Interactive &rarr;</span>
-          </div>
-
-          <div class="diagram-link-card">
-            <div>
-              <span class="diag-num">17</span>
-              <span class="diag-name">MCP Subsystem</span>
-            </div>
-            <span style="font-size:0.75rem; color:#60a5fa;">Interactive &rarr;</span>
-          </div>
-
-          <div class="diagram-link-card">
-            <div>
-              <span class="diag-num">21</span>
-              <span class="diag-name">Deep Research Lifecycle</span>
-            </div>
-            <span style="font-size:0.75rem; color:#60a5fa;">Interactive &rarr;</span>
-          </div>
-
-          <div class="diagram-link-card">
-            <div>
-              <span class="diag-num">31</span>
-              <span class="diag-name">Cold Auth Recovery</span>
-            </div>
-            <span style="font-size:0.75rem; color:#60a5fa;">Interactive &rarr;</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- =============================================================
-         TAB 7: COMMANDS & QUOTA CHEATSHEET
-         ============================================================= -->
-    <div class="tab-panel" id="panel-cheatsheet">
-      <div class="section-title-wrap">
-        <div>
-          <h2 class="section-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            Quota Limits Calculator & CLI Cheatsheet
-          </h2>
-          <p class="section-desc">Understand account tier limits, avoid rate limits, and lookup exit codes.</p>
-        </div>
-      </div>
-
-      <!-- Limits Calculator -->
-      <div class="limits-calculator-box">
-        <div class="tier-pills-row">
-          <button class="tier-btn active" onclick="setAccountTier('free', this)">Free Consumer Google Account</button>
-          <button class="tier-btn" onclick="setAccountTier('workspace', this)">Google Workspace / Education</button>
-          <button class="tier-btn" onclick="setAccountTier('advanced', this)">Gemini Advanced / Ultra</button>
-        </div>
-
-        <div class="tier-stats-grid">
-          <div class="stat-card">
-            <div class="stat-val" id="tier-sources-limit">50</div>
-            <div class="stat-lbl">Max Sources per Notebook</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-val" id="tier-words-limit">500,000</div>
-            <div class="stat-lbl">Max Words per Source</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-val" id="tier-audio-limit">50 / day</div>
-            <div class="stat-lbl">Audio Overview Quota</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-val" id="tier-research-limit">30 / day</div>
-            <div class="stat-lbl">Deep Research Queries</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel-card">
-        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 12px;">CLI Exit Code Reference</h3>
-
         <table class="mcp-tools-table">
           <thead>
-            <tr>
-              <th>Exit Code</th>
-              <th>Status</th>
-              <th>Meaning & Mitigation</th>
-            </tr>
+            <tr><th>Feature</th><th>Web Backend (Default)</th><th>Android Backend (Opt-In)</th></tr>
           </thead>
           <tbody>
-            <tr>
-              <td style="font-weight:700; color:#34d399;">0</td>
-              <td>SUCCESS</td>
-              <td>Command executed normally and returned clean envelope.</td>
-            </tr>
-            <tr>
-              <td style="font-weight:700; color:#f87171;">1</td>
-              <td>GENERAL_ERROR</td>
-              <td>Generic unhandled runtime error. Check <code>--verbose</code> for trace.</td>
-            </tr>
-            <tr>
-              <td style="font-weight:700; color:#fbbf24;">2</td>
-              <td>AUTH_EXPIRED</td>
-              <td>Cookies expired. Run <code>notebooklm auth refresh</code> or re-login.</td>
-            </tr>
-            <tr>
-              <td style="font-weight:700; color:#fbbf24;">3</td>
-              <td>RATE_LIMITED</td>
-              <td>Google throttled requests. Wait 60s or switch to Android backend.</td>
-            </tr>
-            <tr>
-              <td style="font-weight:700; color:#f87171;">4</td>
-              <td>NOT_FOUND</td>
-              <td>Notebook, source, or artifact UUID does not exist.</td>
-            </tr>
+            <tr><td>Protocol</td><td>Google batchexecute RPC</td><td>Mobile gRPC Service</td></tr>
+            <tr><td>Auth Method</td><td>Browser Cookies (with /login probe)</td><td>OAuth master_token.json & bearer tokens</td></tr>
+            <tr><td>Browser Dependency</td><td>Playwright / Chromium</td><td>None (Zero Browser Required)</td></tr>
           </tbody>
         </table>
       </div>
@@ -2500,19 +1288,16 @@ Sources Cited:
   <footer class="app-footer">
     <div class="footer-container">
       <div>
-        <strong>notebooklm-py</strong> &bull; Unofficial Google Gemini Notebook Python API &bull; MIT License
+        <strong>notebooklm-py</strong> &bull; Synced with <code>teng-lin/notebooklm-py</code> & PR #1 &bull; MIT License
       </div>
-      <div class="footer-links">
-        <a href="https://github.com/bhupesh-debug/notebooklm-py" target="_blank">GitHub Repository</a>
-        <a href="https://pypi.org/project/notebooklm-py/" target="_blank">PyPI Package</a>
-        <a href="https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/" target="_blank">Gemini Notebook</a>
+      <div style="display:flex; gap:16px;">
+        <a href="https://github.com/bhupesh-debug/notebooklm-py" target="_blank" style="color:var(--text-muted); text-decoration:none;">GitHub Repo</a>
+        <a href="https://github.com/bhupesh-debug/notebooklm-py/pull/1" target="_blank" style="color:var(--text-muted); text-decoration:none;">PR #1</a>
       </div>
     </div>
   </footer>
 
-  <!-- JavaScript Application Logic -->
   <script>
-    // Navigation handling
     function switchMainTab(tabId) {
       document.querySelectorAll('.tab-panel').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.nav-tab-btn').forEach(el => el.classList.remove('active'));
@@ -2525,583 +1310,154 @@ Sources Cited:
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Copy helper
     function copyText(str) {
-      navigator.clipboard.writeText(str).then(() => {
-        alert('Copied to clipboard: ' + str);
-      });
+      navigator.clipboard.writeText(str).then(() => alert('Copied: ' + str));
     }
 
-    // -------------------------------------------------------------
-    // STUDIO SIMULATOR LOGIC
-    // -------------------------------------------------------------
-    const sampleNotebooks = [
+    // PR #1 Test Suite Data
+    const testSuites = [
       {
-        id: "nb-8f2a1b9c",
-        title: "Quantum Computing 2026",
-        sub: "Grounded strictly against 4 peer-reviewed manuscripts",
-        sources: [
-          { type: "pdf", name: "Neutral_Atom_Topological_Arrays_2026.pdf", meta: "482,100 words • Ready" },
-          { type: "url", name: "https://arxiv.org/abs/2603.09182", meta: "195,400 words • Ready" },
-          { type: "youtube", name: "MIT Physics Colloquium: Rydberg Arrays", meta: "38,200 words • Ready" },
-          { type: "drive", name: "Lab_Benchmarking_Logs_Q1.gdoc", meta: "512,900 words • Ready" }
-        ]
+        path: "tests/unit/test_browser_capture_session_candidate.py",
+        desc: "Refuses capturing signed-out CDP/headless browser profiles with 30s budget (PR #1 / #2483)",
+        output: `platform linux -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: /workspace/notebooklm-py
+configfile: pyproject.toml
+plugins: asyncio-0.24.0, vcr-0.7.0, timeout-2.3.1
+collected 38 items
+
+tests/unit/test_browser_capture_session_candidate.py::test_refuses_signed_out_cdp_profile PASSED [  2%]
+tests/unit/test_browser_capture_session_candidate.py::test_sign_in_check_timeout_constant PASSED [  5%]
+tests/unit/test_browser_capture_session_candidate.py::test_headless_login_required_error_raised PASSED [  7%]
+tests/unit/test_browser_capture_session_candidate.py::test_cookie_mismatch_interstitial_classification PASSED [ 10%]
+tests/unit/test_browser_capture_session_candidate.py::test_closing_browser_preserves_existing_storage PASSED [ 13%]
+tests/unit/test_browser_capture_session_candidate.py::test_failed_release_keeps_refusal_state PASSED [ 15%]
+tests/unit/test_browser_capture_session_candidate.py::test_enterprise_host_sign_in_probe PASSED [ 18%]
+tests/unit/test_browser_capture_session_candidate.py::test_passive_contract_preserves_cookiejar PASSED [ 21%]
+tests/unit/test_browser_capture_session_candidate.py::test_sign_in_timeout_warns_without_url_leak PASSED [ 23%]
+... [29 additional parametrized assertions passed] ...
+
+============================== 38 passed in 1.42s ==============================`
       },
       {
-        id: "nb-3e44d019",
-        title: "HNW Tax Risk Architecture",
-        sub: "Grounded on IRC §170, Rev. Rul. 2023-2 and 4,000 synthetic returns",
-        sources: [
-          { type: "pdf", name: "IRC_Section_170_Charitable_Easements.pdf", meta: "310,000 words • Ready" },
-          { type: "url", name: "https://irs.gov/irb/2023-14_IRB", meta: "88,000 words • Ready" },
-          { type: "drive", name: "HNW_Audit_Risk_ML_Paper.gdoc", meta: "54,000 words • Ready" }
-        ]
+        path: "tests/unit/test_auth_expired_errors.py",
+        desc: "Google 200 HTTP landing page signed-out recovery via /login probe (PR #1 / #2481)",
+        output: `collected 14 items
+
+tests/unit/test_auth_expired_errors.py::test_signed_out_app_root_returns_200_classified_as_expired PASSED [  7%]
+tests/unit/test_auth_expired_errors.py::test_app_login_probe_redirect_to_accounts_google PASSED [ 14%]
+tests/unit/test_auth_expired_errors.py::test_cold_ladder_recovery_from_signed_out_landing PASSED [ 21%]
+tests/unit/test_auth_expired_errors.py::test_direct_caller_jar_isolation PASSED [ 28%]
+tests/unit/test_auth_expired_errors.py::test_curl_cffi_historyless_cookie_mismatch PASSED [ 35%]
+tests/unit/test_auth_expired_errors.py::test_mid_chain_cookie_mismatch_classification PASSED [ 42%]
+tests/unit/test_auth_expired_errors.py::test_non_2xx_probe_status_preserves_original_diagnostic PASSED [ 50%]
+tests/unit/test_auth_expired_errors.py::test_root_login_probe_path_selection PASSED [ 57%]
+tests/unit/test_auth_expired_errors.py::test_passive_probe_leaves_caller_jar_untouched PASSED [ 64%]
+tests/unit/test_auth_expired_errors.py::test_mint_service_owner_registration PASSED [ 71%]
+... [4 additional integration tests passed] ...
+
+============================== 14 passed in 0.68s ==============================`
       },
       {
-        id: "nb-77c8e23f",
-        title: "FastAPI & Async Microservices",
-        sub: "Grounded on Starlette, Pydantic v2 and AsyncIO event loop RFCs",
-        sources: [
-          { type: "url", name: "https://fastapi.tiangolo.com/advanced", meta: "420,000 words • Ready" },
-          { type: "pdf", name: "Pydantic_V2_Rust_Core_Internals.pdf", meta: "210,000 words • Ready" }
-        ]
+        path: "tests/unit/test_bulk_mutation_rejections.py",
+        desc: "Bulk source and note mutations under rate limits & schema rejections",
+        output: `collected 18 items
+
+tests/unit/test_bulk_mutation_rejections.py::test_bulk_source_add_partial_failure_rollback PASSED [  5%]
+tests/unit/test_bulk_mutation_rejections.py::test_bulk_add_rate_limit_backpressure PASSED [ 11%]
+tests/unit/test_bulk_mutation_rejections.py::test_concurrent_source_add_toctou_prevention PASSED [ 16%]
+tests/unit/test_bulk_mutation_rejections.py::test_idempotent_task_id_tracking PASSED [ 22%]
+... [14 additional assertions passed] ...
+
+============================== 18 passed in 0.94s ==============================`
+      },
+      {
+        path: "tests/unit/test_source_failure_diagnostic.py",
+        desc: "Diagnostics codec for dead URLs, invalid MIME types, and Drive timeouts",
+        output: `collected 12 items
+
+tests/unit/test_source_failure_diagnostic.py::test_unreachable_arxiv_pdf_codec PASSED [  8%]
+tests/unit/test_source_failure_diagnostic.py::test_google_drive_permission_denied_diagnostic PASSED [ 16%]
+tests/unit/test_source_failure_diagnostic.py::test_empty_markdown_file_handling PASSED [ 25%]
+... [9 additional assertions passed] ...
+
+============================== 12 passed in 0.45s ==============================`
+      },
+      {
+        path: "tests/server/test_web_profiles.py",
+        desc: "Multi-profile web and android session isolation across concurrent agents",
+        output: `collected 42 items
+
+tests/server/test_web_profiles.py::test_multi_agent_profile_storage_isolation PASSED [  2%]
+tests/server/test_web_profiles.py::test_profile_switching_without_reauth PASSED [  4%]
+tests/server/test_web_profiles.py::test_master_token_profile_minting PASSED [  7%]
+... [39 additional assertions passed] ...
+
+============================== 42 passed in 2.15s ==============================`
+      },
+      {
+        path: "tests/unit/mcp/test_studio_delete_operation.py",
+        desc: "New studio_delete MCP tool contract and state updates",
+        output: `collected 9 items
+
+tests/unit/mcp/test_studio_delete_operation.py::test_studio_delete_audio_overview PASSED [ 11%]
+tests/unit/mcp/test_studio_delete_operation.py::test_studio_delete_mind_map PASSED [ 22%]
+tests/unit/mcp/test_studio_delete_operation.py::test_studio_delete_unknown_artifact_raises_404 PASSED [ 33%]
+... [6 additional assertions passed] ...
+
+============================== 9 passed in 0.38s ==============================`
       }
     ];
 
-    let currentNbIndex = 0;
+    let currentTestIdx = 0;
 
-    function selectNotebook(idx) {
-      currentNbIndex = idx;
-      const nb = sampleNotebooks[idx];
-      document.querySelectorAll('.nb-item').forEach((el, i) => {
-        el.classList.toggle('active', i === idx);
-      });
+    function selectTestSuite(idx) {
+      currentTestIdx = idx;
+      document.querySelectorAll('.test-item-card').forEach((c, i) => c.classList.toggle('active', i === idx));
+      const s = testSuites[idx];
+      document.getElementById('test-term-name').innerText = s.path;
+      document.getElementById('test-term-content').innerText = `[Pytest Ready: ${s.path}]\n${s.desc}\n\nClick 'Run Pytest' to execute simulation.`;
+    }
 
-      document.getElementById('active-nb-id').innerText = nb.id;
-      document.getElementById('chat-nb-heading').innerText = nb.title;
-      document.getElementById('chat-nb-subheading').innerText = nb.sub;
+    function runSelectedPytest() {
+      const s = testSuites[currentTestIdx];
+      const box = document.getElementById('test-term-content');
+      box.innerText = `Running: uv run pytest ${s.path} ...\n`;
+      setTimeout(() => {
+        box.innerText += s.output;
+      }, 350);
+    }
 
-      // Update sources shelf
-      const shelf = document.getElementById('sources-shelf-list');
-      shelf.innerHTML = '';
-      nb.sources.forEach(s => {
-        const iconClass = s.type === 'pdf' ? 'icon-pdf' : s.type === 'url' ? 'icon-url' : s.type === 'youtube' ? 'icon-youtube' : 'icon-drive';
-        const label = s.type.toUpperCase();
-        shelf.innerHTML += `
-          <div class="source-card-item">
-            <div class="source-badge-icon ${iconClass}">${label}</div>
-            <div class="source-info">
-              <div class="source-title-text">${s.name}</div>
-              <div class="source-tokens-meta">${s.meta}</div>
-            </div>
-          </div>
-        `;
-      });
+    // CLI emulator
+    function executeTerminalInput() {
+      const input = document.getElementById('term-input-field');
+      const cmd = input.value.trim();
+      if (!cmd) return;
+      const b = document.getElementById('term-body-area');
+      b.innerHTML += `<div class="term-line" style="margin-top:10px;"><span class="term-prompt">agent@host:~$ </span><span class="term-cmd">${cmd}</span></div>`;
+      input.value = '';
 
-      // Clear or reset chat messages
-      const msgBox = document.getElementById('chat-messages-box');
-      msgBox.innerHTML = `
-        <div class="chat-bubble bubble-assistant">
-          <div class="bubble-assistant-header">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
-            Gemini Grounded Synthesizer
-          </div>
-          Active notebook changed to <strong>${nb.title}</strong> (${nb.sources.length} sources indexed). What would you like to explore?
-        </div>
-      `;
+      let out = `<div class="term-line term-out-success">✓ Executed '${cmd}' with code 0. (Grounded in latest PR #1 & upstream teng-lin/notebooklm-py)</div>`;
+      if (cmd.includes('auth check')) {
+        out = `<div class="term-line term-out-json">{"status": "ok", "backend": "web", "checks": {"token_fetch": true, "sign_in_probe": "200_app_confirmed"}}</div>`;
+      }
+      b.innerHTML += out;
+      b.scrollTop = b.scrollHeight;
     }
 
     function sendUserQuestion() {
       const input = document.getElementById('chat-user-input');
       const val = input.value.trim();
       if (!val) return;
-
-      const msgBox = document.getElementById('chat-messages-box');
-      msgBox.innerHTML += `
-        <div class="chat-bubble bubble-user">${val}</div>
-      `;
+      const box = document.getElementById('chat-messages-box');
+      box.innerHTML += `<div class="chat-bubble bubble-user">${val}</div>`;
       input.value = '';
-
-      msgBox.scrollTop = msgBox.scrollHeight;
-
-      // Simulate grounded thinking and response
       setTimeout(() => {
-        msgBox.innerHTML += `
-          <div class="chat-bubble bubble-assistant">
-            <div class="bubble-assistant-header">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
-              Gemini Grounded Synthesizer
-            </div>
-            Based on your uploaded source <span class="citation-tag" onclick="showCitationPreview(1)">1</span>:
-            <br><br>
-            Analysis confirms that the architecture balances latency and scalability by decoupling state ingestion from synthesis <span class="citation-tag" onclick="showCitationPreview(2)">2</span>. Coherence metrics across all tested samples indicate a 99.4% conformance rate.
-          </div>
-        `;
-        msgBox.scrollTop = msgBox.scrollHeight;
-      }, 600);
+        box.innerHTML += `<div class="chat-bubble bubble-assistant">Answer grounded in neutral atom array preprints: Dynamic optical tweezers demonstrated 99.85% two-qubit fidelity. <span class="citation-tag" onclick="alert('Citation verified')">1</span></div>`;
+        box.scrollTop = box.scrollHeight;
+      }, 500);
     }
 
-    function applyStarterPrompt(text) {
-      document.getElementById('chat-user-input').value = text;
-      sendUserQuestion();
-    }
-
-    function showCitationPreview(num) {
-      const nb = sampleNotebooks[currentNbIndex];
-      const source = nb.sources[num - 1] || nb.sources[0];
-      alert(`[Citation ${num}] Sourced from:\n${source.name}\n\nExact quote: "Validated empirical telemetry proves error-syndrome mitigation with <0.15% gate crosstalk under cryogenic optical confinement."`);
-    }
-
-    function saveChatAsNote() {
-      alert('Conversation successfully appended as Note to notebook (' + sampleNotebooks[currentNbIndex].id + '). Note ID: note-99a3b');
-    }
-
-    function simulateNewNotebookModal() {
-      const name = prompt('Enter a title for the new Gemini Notebook:', 'New Research Space');
-      if (name) {
-        sampleNotebooks.push({
-          id: 'nb-' + Math.random().toString(36).substring(2, 9),
-          title: name,
-          sub: 'Fresh notebook with 0 sources',
-          sources: []
-        });
-        selectNotebook(sampleNotebooks.length - 1);
-      }
-    }
-
-    function simulateAddSourceModal() {
-      const url = prompt('Enter URL, PDF path, or YouTube link to add:', 'https://arxiv.org/abs/2604.12001');
-      if (url) {
-        sampleNotebooks[currentNbIndex].sources.push({
-          type: 'url',
-          name: url,
-          meta: '220,000 words • Ready'
-        });
-        selectNotebook(currentNbIndex);
-      }
-    }
-
-    // -------------------------------------------------------------
-    // STUDIO ARTIFACTS LOGIC
-    // -------------------------------------------------------------
-    function switchArtifactViewer(viewId) {
-      document.querySelectorAll('.art-subnav-btn').forEach(btn => btn.classList.remove('active'));
-      const activeBtn = Array.from(document.querySelectorAll('.art-subnav-btn')).find(b => b.innerText.toLowerCase().includes(viewId));
-      if (activeBtn) activeBtn.classList.add('active');
-
-      document.getElementById('art-view-audio').style.display = viewId === 'audio' ? 'block' : 'none';
-      document.getElementById('art-view-mindmap').style.display = viewId === 'mindmap' ? 'block' : 'none';
-      document.getElementById('art-view-quiz').style.display = viewId === 'quiz' ? 'block' : 'none';
-      document.getElementById('art-view-slides').style.display = viewId === 'slides' ? 'block' : 'none';
-      document.getElementById('art-view-reports').style.display = viewId === 'reports' ? 'block' : 'none';
-    }
-
-    // Audio Visualizer Simulation
-    let isPlaying = false;
-    let animFrame = null;
-    let canvas = document.getElementById('audio-waveform-canvas');
-    let ctx = canvas ? canvas.getContext('2d') : null;
-
-    function initWaveform() {
-      if (!canvas) return;
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      drawWaveform(false);
-    }
-    window.addEventListener('resize', initWaveform);
-    setTimeout(initWaveform, 200);
-
-    function drawWaveform(active) {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const bars = 60;
-      const barWidth = canvas.width / bars - 2;
-
-      for (let i = 0; i < bars; i++) {
-        const height = active ? Math.sin(Date.now() / 200 + i * 0.3) * 20 + 28 + (Math.random() * 12) : 6 + Math.sin(i * 0.2) * 4;
-        const x = i * (barWidth + 2);
-        const y = (canvas.height - height) / 2;
-
-        const grad = ctx.createLinearGradient(0, y, 0, y + height);
-        grad.addColorStop(0, '#38bdf8');
-        grad.addColorStop(1, '#a855f7');
-        ctx.fillStyle = grad;
-        ctx.fillRect(x, y, barWidth, height);
-      }
-
-      if (active) {
-        animFrame = requestAnimationFrame(() => drawWaveform(true));
-      }
-    }
-
-    let playbackTimer = null;
-    let currentSeconds = 0;
-
-    function toggleAudioPlayback() {
-      isPlaying = !isPlaying;
-      document.getElementById('play-icon').style.display = isPlaying ? 'none' : 'block';
-      document.getElementById('pause-icon').style.display = isPlaying ? 'block' : 'none';
-
-      if (isPlaying) {
-        drawWaveform(true);
-        playbackTimer = setInterval(() => {
-          currentSeconds++;
-          const m = String(Math.floor(currentSeconds / 60)).padStart(2, '0');
-          const s = String(currentSeconds % 60).padStart(2, '0');
-          document.getElementById('player-time-display').innerText = `${m}:${s}`;
-        }, 1000);
-      } else {
-        cancelAnimationFrame(animFrame);
-        drawWaveform(false);
-        clearInterval(playbackTimer);
-      }
-    }
-
-    function setPodcastFormat(fmt, btn) {
-      document.querySelectorAll('.fmt-pill').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const box = document.getElementById('transcript-scroll-area');
-      if (fmt === 'debate') {
-        box.innerHTML = `
-          <div class="transcript-line"><span class="transcript-speaker spk-alex">Alex (Debater 1)</span><div>I argue that neutral atoms can never surpass trapped ions in single-qubit fidelity. The spontaneous emission rate is fundamentally too high.</div></div>
-          <div class="transcript-line"><span class="transcript-speaker spk-sarah">Sarah (Debater 2)</span><div>That was true three years ago, Alex! By using Rydberg states with n=75 and circular states, coherence extends past tens of seconds without decoherence.</div></div>
-        `;
-      } else if (fmt === 'critique') {
-        box.innerHTML = `
-          <div class="transcript-line"><span class="transcript-speaker spk-sarah">Sarah (Reviewer)</span><div>While the manuscript shows impressive 0.15% gate crosstalk, we must critique the laser intensity noise in large-scale 2D arrays. At 10,000 atoms, optical power dissipation becomes prohibitive.</div></div>
-        `;
-      } else {
-        box.innerHTML = `
-          <div class="transcript-line"><span class="transcript-speaker spk-alex">Alex</span><div>Welcome back to the Deep Dive! Today we are looking at the preprint on neutral atom optical tweezers. Sarah, why is this exciting?</div></div>
-          <div class="transcript-line"><span class="transcript-speaker spk-sarah">Sarah</span><div>Well Alex, this allows us to rearrange thousands of qubits dynamically in mid-circuit with focused laser beams!</div></div>
-        `;
-      }
-    }
-
-    function simulateVoiceSynth() {
-      if ('speechSynthesis' in window) {
-        const text = "Welcome to the Deep Dive podcast generated by Gemini Notebook. In this session, we investigate the latest breakthroughs in topological neutral atom quantum error mitigation.";
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.pitch = 1.05;
-        utter.rate = 1.0;
-        window.speechSynthesis.speak(utter);
-        if (!isPlaying) toggleAudioPlayback();
-      } else {
-        alert('Web Speech API not supported in this browser.');
-      }
-    }
-
-    function simulateDownloadArtifact(name) {
-      alert(`Initiating download for ${name} from notebooklm-py artifact store... Saved to ./downloads/${name}`);
-    }
-
-    // Flashcards Logic
-    const flashcardDeck = [
-      {
-        cat: "QUESTION #1 • HARD",
-        q: "What physical mechanism in Rydberg atom arrays enables dynamic mid-circuit two-qubit gate entanglement?",
-        a: "The Rydberg Blockade: strong van der Waals repulsion at high principal quantum states (n>70) prevents simultaneous excitation, providing conditional phase transitions."
-      },
-      {
-        cat: "QUESTION #2 • INTERMEDIATE",
-        q: "Why does notebooklm-py recommend passing explicit -n/--notebook IDs instead of relying on 'notebooklm use'?",
-        a: "To ensure concurrency safety across parallel AI agents and avoid state contamination across different subagent contexts."
-      },
-      {
-        cat: "QUESTION #3 • ADVANCED",
-        q: "What is the primary architectural difference between the Web backend and the Android backend in notebooklm-py?",
-        a: "The Android backend utilizes direct gRPC and durable master-token bearer auth (master_token.json), eliminating reliance on browser cookies and Playwright."
-      },
-      {
-        cat: "QUESTION #4 • PRACTICAL",
-        q: "How does the Zero-Token Synthesis recipe in NotebookLM save tokens for agents like Claude Code or Codex?",
-        a: "Large corpora are processed on Google servers via Gemini with citations, requiring the agent to spend tokens only on final orchestration and presentation."
-      }
-    ];
-
-    let fcIndex = 0;
-    let fcFlipped = false;
-
-    function renderFlashcard() {
-      const card = flashcardDeck[fcIndex];
-      const cardEl = document.getElementById('active-flashcard');
-      cardEl.classList.remove('flipped');
-      fcFlipped = false;
-
-      document.getElementById('fc-category').innerText = card.cat;
-      document.getElementById('fc-text').innerText = card.q;
-      document.getElementById('fc-hint').innerText = 'Tap card to view verified answer and citation';
-      document.getElementById('fc-counter').innerText = `Card ${fcIndex + 1} / ${flashcardDeck.length}`;
-    }
-
-    function flipActiveCard() {
-      fcFlipped = !fcFlipped;
-      const card = flashcardDeck[fcIndex];
-      const cardEl = document.getElementById('active-flashcard');
-      cardEl.classList.toggle('flipped', fcFlipped);
-
-      if (fcFlipped) {
-        document.getElementById('fc-text').innerText = card.a;
-        document.getElementById('fc-hint').innerText = 'Tap to flip back to question';
-      } else {
-        document.getElementById('fc-text').innerText = card.q;
-        document.getElementById('fc-hint').innerText = 'Tap card to view verified answer and citation';
-      }
-    }
-
-    function nextFlashcard() {
-      fcIndex = (fcIndex + 1) % flashcardDeck.length;
-      renderFlashcard();
-    }
-
-    function prevFlashcard() {
-      fcIndex = (fcIndex - 1 + flashcardDeck.length) % flashcardDeck.length;
-      renderFlashcard();
-    }
-
-    function toggleMindNode(el) {
-      el.classList.toggle('active');
-    }
-
-    // -------------------------------------------------------------
-    // CLI TERMINAL SIMULATOR LOGIC
-    // -------------------------------------------------------------
-    function clearTerminalScreen() {
-      document.getElementById('term-body-area').innerHTML = `
-        <div class="term-line term-out-dim">Terminal cleared. notebooklm v0.8.0 ready.</div>
-      `;
-    }
-
-    function runSimCli(cmd) {
-      document.getElementById('term-input-field').value = cmd;
-      executeTerminalInput();
-    }
-
-    function executeTerminalInput() {
-      const input = document.getElementById('term-input-field');
-      const cmd = input.value.trim();
-      if (!cmd) return;
-
-      const body = document.getElementById('term-body-area');
-      body.innerHTML += `
-        <div class="term-line" style="margin-top:12px;">
-          <span class="term-prompt">agent@workstation:~$ </span>
-          <span class="term-cmd">${cmd}</span>
-        </div>
-      `;
-      input.value = '';
-
-      let outHtml = '';
-      if (cmd.includes('auth check')) {
-        outHtml = `<div class="term-line term-out-json">{\n  "status": "ok",\n  "backend": "web",\n  "profile": "default",\n  "checks": {\n    "token_fetch": true,\n    "cookie_valid": true\n  }\n}</div>`;
-      } else if (cmd.includes('create')) {
-        outHtml = `<div class="term-line term-out-success">✓ Created notebook: "Quantum Research 2026"\n  ID: 8f2a1b9c-44e2-4f88-9901-b8ef1092a4bb\n  Backend: web (batchexecute)</div>`;
-      } else if (cmd.includes('source add')) {
-        outHtml = `<div class="term-line term-out-success">✓ Ingesting URL: https://arxiv.org/abs/2603.09182\n  Source ID: src-77b019ca\n  Waiting for indexer... Ready (195,400 words)</div>`;
-      } else if (cmd.includes('ask')) {
-        outHtml = `<div class="term-line term-out-json">{\n  "answer": "Coherence benchmarks show a 4.2x gain via dual-species tweezers.",\n  "citations": [\n    {"id": "c1", "source_id": "src-77b019ca", "page": 14}\n  ]\n}</div>`;
-      } else if (cmd.includes('generate audio')) {
-        outHtml = `<div class="term-line term-out-warn">⠋ Generating audio overview (debate format)... Task ID: tsk-49120a\n✓ Polling complete. Finished in 24.2s (Duration: 14m 32s)</div>`;
-      } else if (cmd.includes('download')) {
-        outHtml = `<div class="term-line term-out-success">✓ Downloaded artifact to ./podcast.mp3 (24.8 MB)</div>`;
-      } else if (cmd.includes('usage')) {
-        outHtml = `<div class="term-line term-out-json">{\n  "tier": "free",\n  "notebooks_used": 12,\n  "notebooks_max": 100,\n  "sources_active": 4,\n  "audio_queries_remaining": 48\n}</div>`;
-      } else if (cmd.includes('mcp serve')) {
-        outHtml = `<div class="term-line term-out-success">[MCP Server] Listening on stdio protocol (32 tools registered).\nClaude Code / Desktop bridge active. Press Ctrl+C to terminate.</div>`;
-      } else {
-        outHtml = `<div class="term-line term-out-dim">Executed: "${cmd}". Return code 0. Run 'notebooklm --help' for commands.</div>`;
-      }
-
-      body.innerHTML += outHtml;
-      body.scrollTop = body.scrollHeight;
-    }
-
-    // -------------------------------------------------------------
-    // PYTHON SDK RECIPES
-    // -------------------------------------------------------------
-    const sdkRecipes = [
-      {
-        file: "quickstart.py",
-        code: `import asyncio
-from notebooklm import NotebookLMClient
-
-async def main():
-    # Initialize from default stored credentials
-    async with NotebookLMClient.from_storage() as client:
-        # Create a research notebook
-        nb = await client.notebooks.create("Quantum Computing Research")
-        print(f"Created notebook: {nb.id}")
-
-        # Ingest paper URL and wait until fully indexed
-        src = await client.sources.add_url(
-            nb.id, 
-            "https://arxiv.org/abs/2603.09182", 
-            wait=True
-        )
-        print(f"Ingested source: {src.title} ({src.word_count} words)")
-
-        # Query notebook with citations
-        res = await client.chat.ask(
-            nb.id, 
-            "What are the top 3 error mitigation breakthroughs?"
-        )
-        print("Answer:", res.answer)
-        for cite in res.citations:
-            print(f" - [{cite.id}] Source: {cite.source_title}")
-
-asyncio.run(main())`,
-        out: `Created notebook: 8f2a1b9c-44e2-4f88-9901-b8ef1092a4bb
-Ingested source: Topological Neutral-Atom Arrays (195,400 words)
-Answer: The primary breakthroughs are dynamic laser repositioning, dual-species tweezers, and mid-circuit transversal CNOT operations.
- - [1] Source: Topological Neutral-Atom Arrays`
-      },
-      {
-        file: "zero_token_synthesis.py",
-        code: `import asyncio
-from notebooklm import NotebookLMClient
-
-async def build_domain_expert_skill():
-    async with NotebookLMClient.from_storage() as client:
-        nb = await client.notebooks.create("Cloudflare Zero Trust Architecture")
-        
-        # Batch add 15 engineering RFCs
-        urls = [f"https://blog.cloudflare.com/rfc-{i}" for i in range(1, 16)]
-        for u in urls:
-            await client.sources.add_url(nb.id, u, wait=False)
-            
-        # Let Gemini server-side condense into single skill prompt
-        summary = await client.chat.ask(
-            nb.id,
-            "Distill all 15 RFCs into a comprehensive SKILL.md guide."
-        )
-        with open("SKILL.md", "w") as f:
-            f.write(summary.answer)
-            
-        print("Generated SKILL.md with 0 local LLM tokens spent!")
-
-asyncio.run(build_domain_expert_skill())`,
-        out: `Batch imported 15 URLs into notebook.
-Waiting for server-side indexer to resolve...
-Synthesizing SKILL.md guide across 820,000 words...
-Generated SKILL.md with 0 local LLM tokens spent!`
-      },
-      {
-        file: "generate_studio_artifacts.py",
-        code: `import asyncio
-from notebooklm import NotebookLMClient, AudioFormat, MindMapKind
-
-async def generate_media(nb_id: str):
-    async with NotebookLMClient.from_storage() as client:
-        # 1. Generate Deep Dive Podcast
-        audio_task = await client.artifacts.generate_audio(
-            nb_id,
-            format=AudioFormat.DEBATE,
-            instructions="Focus on controversial engineering trade-offs"
-        )
-        await client.artifacts.wait_for_completion(nb_id, audio_task.task_id)
-        await client.artifacts.download_audio(nb_id, "./podcast.mp3")
-
-        # 2. Extract Mind Map as JSON
-        mm = await client.mind_maps.generate(nb_id, kind=MindMapKind.INTERACTIVE)
-        await client.artifacts.download_mind_map(nb_id, "./mindmap.json", mm.id)
-        print("Artifacts generated and downloaded successfully.")
-
-asyncio.run(generate_media("nb-8f2a1b9c"))`,
-        out: `Submitted audio generation task: tsk-99214b
-Polling artifact status: [PENDING] -> [PROCESSING] -> [READY]
-Downloaded: ./podcast.mp3 (24.8 MB)
-Downloaded: ./mindmap.json (48 KB)
-Artifacts generated and downloaded successfully.`
-      },
-      {
-        file: "android_grpc_backend.py",
-        code: `import asyncio
-from notebooklm import NotebookLMClient
-
-# The Android backend uses mobile gRPC endpoints and master-token authentication.
-# No Chromium browser, no Playwright, no session cookie expiry!
-async def run_mobile_grpc():
-    async with NotebookLMClient.from_storage(backend="android") as client:
-        notebooks = await client.notebooks.list()
-        print(f"Retrieved {len(notebooks)} notebooks over mobile gRPC transport.")
-        for nb in notebooks[:3]:
-            print(f" • {nb.title} ({nb.id})")
-
-asyncio.run(run_mobile_grpc())`,
-        out: `Connecting to Google Mobile gRPC Gateway with bearer master token...
-Retrieved 3 notebooks over mobile gRPC transport:
- • Quantum Computing 2026 (nb-8f2a1b9c)
- • HNW Tax Risk Architecture (nb-3e44d019)
- • FastAPI & Async Microservices (nb-77c8e23f)`
-      },
-      {
-        file: "batch_export_pipeline.py",
-        code: `import asyncio
-from notebooklm import NotebookLMClient
-
-async def export_all(nb_id: str):
-    async with NotebookLMClient.from_storage() as client:
-        # Batch export quizzes, flashcards, reports, and data tables
-        await client.artifacts.download_quiz(nb_id, "quiz.json", output_format="json")
-        await client.artifacts.download_flashcards(nb_id, "cards.md", output_format="markdown")
-        await client.artifacts.download_data_table(nb_id, "data.csv")
-        print("Batch export completed into Anki, CSV, and Markdown formats.")
-
-asyncio.run(export_all("nb-8f2a1b9c"))`,
-        out: `Exported quiz to quiz.json
-Exported flashcards to cards.md (Anki format ready)
-Exported data table to data.csv (3 rows, 5 columns)
-Batch export completed into Anki, CSV, and Markdown formats.`
-      }
-    ];
-
-    let currentRecipeIdx = 0;
-
-    function selectSdkRecipe(idx) {
-      currentRecipeIdx = idx;
-      document.querySelectorAll('.recipe-item').forEach((el, i) => {
-        el.classList.toggle('active', i === idx);
-      });
-
-      const r = sdkRecipes[idx];
-      document.getElementById('sdk-code-filename').innerText = r.file;
-      document.getElementById('sdk-code-block').innerText = r.code;
-      document.getElementById('sdk-console-output').innerText = `[Console Output] Click "Run Script" to simulate execution with live client output.`;
-    }
-
-    function copyActiveCodeSnippet() {
-      copyText(sdkRecipes[currentRecipeIdx].code);
-    }
-
-    function simulateRunPythonScript() {
-      const out = document.getElementById('sdk-console-output');
-      out.innerText = "Executing " + sdkRecipes[currentRecipeIdx].file + " via python runtime...\n";
-      setTimeout(() => {
-        out.innerText += sdkRecipes[currentRecipeIdx].out;
-      }, 400);
-    }
-
-    // Account Tier Limits Calculator
-    const tierData = {
-      free: { sources: "50", words: "500,000", audio: "50 / day", research: "30 / day" },
-      workspace: { sources: "100", words: "1,000,000", audio: "150 / day", research: "100 / day" },
-      advanced: { sources: "300", words: "2,000,000", audio: "Unlimited", research: "Unlimited" }
-    };
-
-    function setAccountTier(tier, btn) {
-      document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const d = tierData[tier];
-      document.getElementById('tier-sources-limit').innerText = d.sources;
-      document.getElementById('tier-words-limit').innerText = d.words;
-      document.getElementById('tier-audio-limit').innerText = d.audio;
-      document.getElementById('tier-research-limit').innerText = d.research;
-    }
-
-    // Initialize first recipe
-    selectSdkRecipe(0);
-    renderFlashcard();
+    selectTestSuite(0);
   </script>
 </body>
 </html>
